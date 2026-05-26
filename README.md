@@ -1,2 +1,2 @@
-# Scholux
-Intelligent Education Management System
+# StarrNova
+Unified Intelligent Education System
