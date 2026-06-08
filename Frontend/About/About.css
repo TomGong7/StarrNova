@@ -3,19 +3,19 @@
    ======================================== */
 
 .about-page {
-    background-color: #f5f5f5;
+    background-color: var(--bg-tertiary);
 }
 
 /* ---- 关于页面头部 ---- */
 .about-header {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-accent) 100%);
+    color: var(--text-white);
     padding: 60px 20px;
     text-align: center;
 }
 
 .about-header h1 {
-    color: white;
+    color: var(--text-white);
     font-size: 40px;
     margin-bottom: 10px;
 }
@@ -27,14 +27,14 @@
 
 /* ---- 内容区域 ---- */
 .about-content {
-    background-color: white;
+    background-color: var(--bg-primary);
     padding: 60px 20px;
 }
 
 .content-section {
     margin-bottom: 50px;
     padding-bottom: 40px;
-    border-bottom: 1px solid #e0e0e0;
+    border-bottom: 1px solid var(--border-gray-light);
 }
 
 .content-section:last-child {
@@ -44,13 +44,13 @@
 }
 
 .content-section h2 {
-    color: #667eea;
+    color: var(--primary-light);
     font-size: 28px;
     margin-bottom: 20px;
 }
 
 .content-section p {
-    color: #666;
+    color: var(--text-secondary);
     line-height: 1.8;
     font-size: 15px;
 }
@@ -64,7 +64,7 @@
 .advantages-list li {
     padding: 15px 0;
     padding-left: 30px;
-    color: #666;
+    color: var(--text-secondary);
     line-height: 1.8;
     position: relative;
 }
@@ -73,13 +73,13 @@
     content: "✓";
     position: absolute;
     left: 0;
-    color: #667eea;
+    color: var(--primary-light);
     font-weight: bold;
     font-size: 18px;
 }
 
 .advantages-list strong {
-    color: #2c3e50;
+    color: var(--primary-dark);
 }
 
 /* ---- 发展路线图 ---- */
@@ -91,22 +91,22 @@
 }
 
 .roadmap-item {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-    color: white;
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-accent) 100%);
+    color: var(--text-white);
     padding: 30px 20px;
     border-radius: 8px;
     text-align: center;
-    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+    box-shadow: 0 4px 12px var(--shadow-primary);
     transition: all 0.3s ease;
 }
 
 .roadmap-item:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+    box-shadow: 0 8px 20px var(--shadow-primary-hover);
 }
 
 .roadmap-item h3 {
-    color: white;
+    color: var(--text-white);
     font-size: 20px;
     margin-bottom: 10px;
 }
@@ -118,20 +118,20 @@
 
 /* ---- 联系信息 ---- */
 .contact-info {
-    background: #f9f9f9;
+    background: var(--bg-secondary);
     padding: 25px;
     border-radius: 8px;
-    border-left: 4px solid #667eea;
+    border-left: 4px solid var(--primary-light);
 }
 
 .contact-info p {
     margin: 12px 0;
-    color: #2c3e50;
+    color: var(--text-primary);
     font-size: 15px;
 }
 
 .contact-info strong {
-    color: #667eea;
+    color: var(--primary-light);
 }
 
 /* ---- 响应式设计 ---- */

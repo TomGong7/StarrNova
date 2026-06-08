@@ -3,7 +3,7 @@
    ======================================== */
 
 .register-page {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-accent) 100%);
     min-height: 100vh;
 }
 
@@ -33,7 +33,7 @@
 }
 
 .register-info h2 {
-    color: white;
+    color: var(--text-white);
     font-size: 32px;
     margin-bottom: 10px;
 }
@@ -68,14 +68,14 @@
 
 /* ---- 右侧表单区域 ---- */
 .register-form-wrapper {
-    background: white;
+    background: var(--bg-primary);
     padding: 40px;
     border-radius: 12px;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 10px 40px var(--shadow-primary-strong);
 }
 
 .register-form-wrapper h1 {
-    color: #2c3e50;
+    color: var(--primary-dark);
     font-size: 28px;
     margin-bottom: 30px;
     text-align: center;
@@ -93,7 +93,7 @@
 .form-group label {
     display: block;
     margin-bottom: 6px;
-    color: #2c3e50;
+    color: var(--primary-dark);
     font-weight: 600;
     font-size: 14px;
 }
@@ -104,7 +104,7 @@
 .form-group select {
     width: 100%;
     padding: 12px;
-    border: 1px solid #ddd;
+    border: 1px solid var(--border-gray);
     border-radius: 6px;
     font-size: 14px;
     transition: all 0.3s ease;
@@ -115,14 +115,14 @@
 .form-group input[type="password"]:focus,
 .form-group select:focus {
     outline: none;
-    border-color: #667eea;
-    box-shadow: 0 0 8px rgba(102, 126, 234, 0.2);
+    border-color: var(--primary-light);
+    box-shadow: 0 0 8px rgba(0, 153, 204, 0.2);
 }
 
 .password-hint {
     display: block;
     margin-top: 5px;
-    color: #999;
+    color: var(--text-tertiary);
     font-size: 12px;
 }
 
@@ -142,14 +142,14 @@
 
 .terms-label {
     font-size: 13px;
-    color: #666;
+    color: var(--text-secondary);
     font-weight: normal;
     cursor: pointer;
     line-height: 1.5;
 }
 
 .terms-label a {
-    color: #667eea;
+    color: var(--primary-light);
 }
 
 /* ---- 提交按钮 ---- */
@@ -162,24 +162,24 @@
 }
 
 .register-form .btn-primary {
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, var(--primary-light) 0%, var(--primary-accent) 100%);
     border: none;
 }
 
 .register-form .btn-primary:hover {
     transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.3);
+    box-shadow: 0 6px 20px var(--shadow-primary-hover);
 }
 
 /* ---- 页脚链接 ---- */
 .form-footer {
     text-align: center;
-    color: #666;
+    color: var(--text-secondary);
     font-size: 14px;
 }
 
 .form-footer a {
-    color: #667eea;
+    color: var(--primary-light);
     font-weight: 600;
 }
 

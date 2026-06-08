@@ -3,6 +3,71 @@
    所有界面的通用元素样式定义
    ======================================== */
 
+/* ---- 0. 颜色变量定义 ---- */
+:root {
+    /* 蓝绿色系（主色调） */
+    --primary-light: #0099cc;
+    --primary-dark: #004d7a;
+    --primary-accent: #00d4a0;
+    --primary-gradient-start: #0099cc;
+    --primary-gradient-end: #00d4a0;
+    
+    /* 深色系（导航栏/页脚背景） */
+    --dark-light: rgba(0, 77, 122, 0.8);
+    --dark-dark: rgba(0, 77, 122, 0.95);
+    --dark-medium: rgba(0, 139, 127, 0.8);
+    --dark-hover: rgba(0, 139, 127, 0.95);
+    
+    /* 中性色 */
+    --text-primary: #333;
+    --text-secondary: #666;
+    --text-tertiary: #999;
+    --text-white: #fff;
+    --text-muted: rgba(255, 255, 255, 0.85);
+    
+    /* 背景色 */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f9f9f9;
+    --bg-tertiary: #f5f5f5;
+    --bg-gradient-start: #f5f7fa;
+    --bg-gradient-end: #c3cfe2;
+    
+    /* 边框色 */
+    --border-light: rgba(255, 255, 255, 0.1);
+    --border-light-2: rgba(255, 255, 255, 0.2);
+    --border-light-3: rgba(255, 255, 255, 0.3);
+    --border-accent: rgba(0, 212, 160, 0.2);
+    --border-accent-strong: rgba(0, 212, 160, 0.4);
+    --border-gray: #ddd;
+    --border-gray-light: #e0e0e0;
+    
+    /* 阴影色 */
+    --shadow-primary: rgba(0, 153, 204, 0.15);
+    --shadow-primary-strong: rgba(0, 153, 204, 0.2);
+    --shadow-primary-hover: rgba(0, 153, 204, 0.3);
+    --shadow-dark: rgba(0, 99, 153, 0.15);
+    
+    /* 状态色 */
+    --success: #27ae60;
+    --success-light: #229954;
+    --danger: #e74c3c;
+    --danger-light: #c0392b;
+    --warning: #f39c12;
+    --info: #3498db;
+    
+    /* 管理员主题色 */
+    --admin-primary: #e74c3c;
+    --admin-primary-dark: #c0392b;
+    
+    /* 透明度白色 */
+    --white-05: rgba(255, 255, 255, 0.5);
+    --white-06: rgba(255, 255, 255, 0.6);
+    --white-07: rgba(255, 255, 255, 0.7);
+    --white-075: rgba(255, 255, 255, 0.75);
+    --white-08: rgba(255, 255, 255, 0.8);
+    --white-085: rgba(255, 255, 255, 0.85);
+}
+
 /* ---- 1. 全局样式 ---- */
 * {
     margin: 0;
@@ -18,8 +83,10 @@ body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     font-size: 14px;
     line-height: 1.6;
-    color: #333;
-    background-color: #f5f5f5;
+    color: var(--text-primary);
+    background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+    background-attachment: fixed;
+    min-height: 100vh;
 }
 
 /* ---- 2. 页面布局 ---- */
@@ -39,15 +106,26 @@ main {
     flex: 1;
 }
 
-/* ---- 3. 导航栏样式 ---- */
+/* ---- 3. 导航栏样式（磨砂玻璃效果 - 蓝绿渐变） ---- */
 nav {
-    background-color: #2c3e50;
-    color: white;
+    background: linear-gradient(135deg, var(--dark-light), var(--dark-medium));
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--border-accent);
+    color: var(--text-white);
     padding: 15px 0;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 20px var(--shadow-dark),
+                inset 0 1px 0 var(--border-light);
     position: sticky;
     top: 0;
     z-index: 100;
+    transition: all 0.3s ease;
+}
+
+nav:hover {
+    background: linear-gradient(135deg, var(--dark-dark), var(--dark-hover));
+    box-shadow: 0 6px 24px var(--shadow-dark),
+                inset 0 1px 0 var(--border-light);
 }
 
 nav ul {
@@ -58,33 +136,40 @@ nav ul {
 }
 
 nav a {
-    color: white;
+    color: var(--text-muted);
     text-decoration: none;
-    transition: color 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
     font-weight: 500;
+    position: relative;
 }
 
 nav a:hover {
-    color: #3498db;
+    color: var(--primary-accent);
 }
 
 nav .active {
-    color: #3498db;
-    border-bottom: 2px solid #3498db;
+    color: var(--primary-accent);
+    border-bottom: 2px solid var(--primary-accent);
     padding-bottom: 5px;
 }
 
-/* ---- 4. 页脚样式 ---- */
+/* ---- 4. 页脚样式（磨砂玻璃效果 - 蓝绿渐变） ---- */
 footer {
-    background-color: #2c3e50;
-    color: white;
+    background: linear-gradient(135deg, var(--dark-light), var(--dark-medium));
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-top: 1px solid var(--border-accent);
+    color: rgba(255, 255, 255, 0.9);
     text-align: center;
     padding: 30px 20px;
     margin-top: 50px;
+    box-shadow: 0 -4px 20px var(--shadow-dark),
+                inset 0 1px 0 var(--border-light);
 }
 
 footer p {
     margin: 5px 0;
+    font-size: 14px;
 }
 
 footer .footer-content {
@@ -100,58 +185,97 @@ footer .footer-section {
     padding: 10px;
 }
 
-/* ---- 5. 按钮样式 ---- */
+/* ---- 5. 按钮样式（磨砂玻璃效果） ---- */
 .btn {
     display: inline-block;
     padding: 10px 20px;
     border: none;
-    border-radius: 4px;
+    border-radius: 8px;
     font-size: 14px;
     font-weight: 600;
     cursor: pointer;
-    transition: all 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
     text-decoration: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: blur(2px);
+    transition: left 0.3s ease;
+    z-index: -1;
+}
+
+.btn:hover::before {
+    left: 0;
 }
 
 .btn-primary {
-    background-color: #3498db;
-    color: white;
+    background: linear-gradient(135deg, rgba(0, 153, 204, 0.8), rgba(0, 212, 160, 0.8));
+    backdrop-filter: blur(8px);
+    color: var(--text-white);
+    border: 1px solid rgba(0, 212, 160, 0.3);
+    box-shadow: 0 4px 12px var(--shadow-primary),
+                inset 0 1px 0 var(--white-07);
 }
 
 .btn-primary:hover {
-    background-color: #2980b9;
+    background: linear-gradient(135deg, var(--primary-light), var(--primary-accent));
     transform: translateY(-2px);
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    box-shadow: 0 6px 20px var(--shadow-primary-hover),
+                inset 0 1px 0 var(--white-08);
 }
 
 .btn-secondary {
-    background-color: #95a5a6;
-    color: white;
+    background: rgba(149, 165, 166, 0.7);
+    backdrop-filter: blur(8px);
+    color: var(--text-white);
+    border: 1px solid rgba(149, 165, 166, 0.3);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .btn-secondary:hover {
-    background-color: #7f8c8d;
+    background: rgba(127, 140, 141, 0.85);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
 }
 
 .btn-success {
-    background-color: #27ae60;
-    color: white;
+    background: linear-gradient(135deg, rgba(39, 174, 96, 0.8), rgba(34, 153, 84, 0.8));
+    backdrop-filter: blur(8px);
+    color: var(--text-white);
+    border: 1px solid rgba(39, 174, 96, 0.3);
+    box-shadow: 0 4px 12px rgba(39, 174, 96, 0.2);
 }
 
 .btn-success:hover {
-    background-color: #229954;
+    background: linear-gradient(135deg, var(--success), var(--success-light));
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(39, 174, 96, 0.3);
 }
 
 .btn-danger {
-    background-color: #e74c3c;
-    color: white;
+    background: linear-gradient(135deg, rgba(231, 76, 60, 0.8), rgba(192, 57, 43, 0.8));
+    backdrop-filter: blur(8px);
+    color: var(--text-white);
+    border: 1px solid rgba(231, 76, 60, 0.3);
+    box-shadow: 0 4px 12px rgba(231, 76, 60, 0.2);
 }
 
 .btn-danger:hover {
-    background-color: #c0392b;
+    background: linear-gradient(135deg, var(--danger), var(--danger-light));
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(231, 76, 60, 0.3);
 }
 
-/* ---- 6. 表单样式 ---- */
+/* ---- 6. 表单样式（磨砂玻璃效果） ---- */
 form {
     max-width: 500px;
     margin: 20px auto;
@@ -165,7 +289,7 @@ label {
     display: block;
     margin-bottom: 5px;
     font-weight: 600;
-    color: #2c3e50;
+    color: var(--primary-dark);
 }
 
 input[type="text"],
@@ -176,12 +300,16 @@ input[type="date"],
 select,
 textarea {
     width: 100%;
-    padding: 10px;
-    border: 1px solid #bdc3c7;
-    border-radius: 4px;
+    padding: 10px 12px;
+    background: var(--white-06);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(189, 195, 199, 0.3);
+    border-radius: 8px;
     font-size: 14px;
     font-family: inherit;
-    transition: border-color 0.3s ease;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
+    color: var(--text-primary);
 }
 
 input[type="text"]:focus,
@@ -192,8 +320,10 @@ input[type="date"]:focus,
 select:focus,
 textarea:focus {
     outline: none;
-    border-color: #3498db;
-    box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+    background: var(--white-085);
+    border-color: rgba(0, 153, 204, 0.5);
+    box-shadow: 0 0 0 3px rgba(0, 153, 204, 0.1),
+                inset 0 1px 2px rgba(0, 0, 0, 0.05);
 }
 
 textarea {
@@ -201,41 +331,56 @@ textarea {
     min-height: 100px;
 }
 
-/* ---- 7. 消息提示样式 ---- */
+/* ---- 7. 消息提示样式（磨砂玻璃效果） ---- */
 .alert {
-    padding: 15px;
+    padding: 15px 16px;
     margin: 15px 0;
-    border-radius: 4px;
+    border-radius: 8px;
     border-left: 4px solid;
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    animation: slideIn 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+@keyframes slideIn {
+    from {
+        transform: translateY(-10px);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
 }
 
 .alert-success {
-    background-color: #d4edda;
+    background: rgba(212, 237, 218, 0.7);
     color: #155724;
-    border-color: #28a745;
+    border-color: var(--success);
 }
 
 .alert-danger {
-    background-color: #f8d7da;
+    background: rgba(248, 215, 218, 0.7);
     color: #721c24;
     border-color: #f5c6cb;
 }
 
 .alert-warning {
-    background-color: #fff3cd;
+    background: rgba(255, 243, 205, 0.7);
     color: #856404;
     border-color: #ffeeba;
 }
 
 .alert-info {
-    background-color: #d1ecf1;
+    background: rgba(209, 236, 241, 0.7);
     color: #0c5460;
     border-color: #bee5eb;
 }
 
 /* ---- 8. 标题样式 ---- */
 h1, h2, h3, h4, h5, h6 {
-    color: #2c3e50;
+    color: var(--primary-dark);
     margin-bottom: 10px;
     font-weight: 600;
 }
@@ -262,54 +407,134 @@ p {
 }
 
 a {
-    color: #3498db;
+    color: var(--primary-light);
     text-decoration: none;
     transition: color 0.3s ease;
 }
 
 a:hover {
-    color: #2980b9;
+    color: var(--primary-accent);
 }
 
-/* ---- 10. 表格样式 ---- */
+/* ---- 10. 表格样式（磨砂玻璃效果） ---- */
 table {
     width: 100%;
     border-collapse: collapse;
     margin: 20px 0;
+    background: rgba(255, 255, 255, 0.6);
+    backdrop-filter: blur(8px);
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 4px 12px rgba(31, 38, 135, 0.08);
 }
 
 table th {
-    background-color: #2c3e50;
+    background: linear-gradient(135deg, rgba(0, 77, 122, 0.7), rgba(0, 139, 127, 0.5));
+    backdrop-filter: blur(8px);
     color: white;
-    padding: 12px;
+    padding: 14px 12px;
     text-align: left;
     font-weight: 600;
+    border-bottom: 2px solid rgba(0, 212, 160, 0.2);
 }
 
 table td {
-    padding: 10px 12px;
-    border-bottom: 1px solid #ddd;
+    padding: 12px;
+    border-bottom: 1px solid rgba(221, 221, 221, 0.5);
+}
+
+table tbody tr {
+    transition: all 0.3s ease;
 }
 
 table tbody tr:hover {
-    background-color: #f9f9f9;
+    background: rgba(0, 153, 204, 0.08);
+    backdrop-filter: blur(4px);
 }
 
-/* ---- 11. 卡片样式 ---- */
+/* ---- 11. 磨砂玻璃效果（Glassmorphism - 蓝绿渐变） ---- */
+/* 基础磨砂玻璃类 */
+.glassmorphism {
+    background: var(--white-07);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border: 1px solid var(--border-accent);
+    border-radius: 12px;
+}
+
+/* 强磨砂玻璃 - 用于主要内容区域 */
+.glass-strong {
+    background: var(--white-08);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(0, 153, 204, 0.2);
+    border-radius: 14px;
+    box-shadow: 0 8px 32px var(--shadow-primary),
+                inset 0 1px 1px rgba(255, 255, 255, 0.5);
+}
+
+/* 轻磨砂玻璃 - 用于悬停效果或次要元素 */
+.glass-light {
+    background: var(--white-05);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(0, 212, 160, 0.15);
+    border-radius: 10px;
+}
+
+/* 深色磨砂玻璃 - 用于导航栏或暗色背景 */
+.glass-dark {
+    background: linear-gradient(135deg, rgba(0, 77, 122, 0.7), rgba(0, 139, 127, 0.7));
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border: 1px solid var(--border-accent);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px var(--shadow-primary),
+                inset 0 1px 1px rgba(0, 212, 160, 0.1);
+}
+
+/* 彩色磨砂玻璃 - 用于突出显示 */
+.glass-gradient {
+    background: linear-gradient(135deg, rgba(0, 153, 204, 0.1), rgba(0, 212, 160, 0.1));
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border-accent-strong);
+    border-radius: 12px;
+    box-shadow: 0 8px 32px var(--shadow-primary);
+}
+
+/* ---- 12. 卡片样式（更新为磨砂玻璃） ---- */
 .card {
-    background-color: white;
-    border-radius: 4px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background: var(--white-075);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid var(--border-accent);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px var(--shadow-primary),
+                0 8px 24px var(--shadow-primary-strong),
+                inset 0 1px 0 var(--white-07);
     padding: 20px;
     margin-bottom: 20px;
+    transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+}
+
+.card:hover {
+    background: var(--white-085);
+    border-color: var(--border-accent-strong);
+    box-shadow: 0 6px 20px var(--shadow-primary-strong),
+                0 12px 32px var(--shadow-primary-hover),
+                inset 0 1px 0 var(--white-08);
+    transform: translateY(-2px);
 }
 
 .card-header {
-    border-bottom: 1px solid #e0e0e0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.3));
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border-accent);
     margin: -20px -20px 15px -20px;
     padding: 15px 20px;
-    background-color: #f9f9f9;
-    border-radius: 4px 4px 0 0;
+    border-radius: 8px 8px 0 0;
+    font-weight: 600;
 }
 
 .card-body {
@@ -317,14 +542,14 @@ table tbody tr:hover {
 }
 
 .card-footer {
-    border-top: 1px solid #e0e0e0;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
+    border-top: 1px solid var(--border-accent);
     margin: 15px -20px -20px -20px;
     padding: 15px 20px;
-    background-color: #f9f9f9;
-    border-radius: 0 0 4px 4px;
+    border-radius: 0 0 8px 8px;
 }
 
-/* ---- 12. 响应式设计 ---- */
+/* ---- 响应式设计 ---- */
 @media (max-width: 768px) {
     nav ul {
         gap: 15px;
@@ -333,6 +558,7 @@ table tbody tr:hover {
     .btn {
         padding: 8px 16px;
         font-size: 13px;
+        border-radius: 6px;
     }
 
     h1 {
@@ -341,5 +567,29 @@ table tbody tr:hover {
 
     h2 {
         font-size: 20px;
+    }
+
+    /* 在移动设备上减弱模糊效果以提高性能 */
+    .glassmorphism,
+    .glass-strong,
+    .glass-light,
+    .glass-dark,
+    .glass-gradient,
+    .card,
+    nav,
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="number"],
+    input[type="date"],
+    select,
+    textarea,
+    table {
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+    }
+
+    .card {
+        padding: 15px;
     }
 }
