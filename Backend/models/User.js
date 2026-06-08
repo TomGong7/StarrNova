@@ -1,0 +1,123 @@
+// ========================================
+// 用户数据库模型
+// ========================================
+
+const db = require('../config/db');
+
+class User {
+    // 创建用户表
+    static async createTable() {
+        const sql = `
+            CREATE TABLE IF NOT EXISTS users (
+                id INT AUTO_INCREMENT PRIMARY KEY,
+                username VARCHAR(50) UNIQUE NOT NULL,
+                email VARCHAR(100) UNIQUE NOT NULL,
+                password VARCHAR(255) NOT NULL,
+                full_name VARCHAR(100),
+                user_type ENUM('student', 'teacher', 'admin') NOT NULL,
+                student_id VARCHAR(50) UNIQUE,
+                status ENUM('active', 'inactive') DEFAULT 'active',
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+            )
+        `;
+        try {
+            await db.query(sql);
+            console.log('✓ users 表已创建或已存在');
+        } catch (err) {
+            console.error('创建 users 表失败:', err);
+        }
+    }
+
+    // 创建用户
+    static async create(userData) {
+        const { username, email, password, fullName, userType, studentId } = userData;
+        const sql = 'INSERT INTO users (username, email, password, full_name, user_type, student_id) VALUES (?, ?, ?, ?, ?, ?)';
+        try {
+            const [result] = await db.query(sql, [username, email, password, fullName, userType, studentId]);
+            return result.insertId;
+        } catch (err) {
+            throw err;
+        }
+    }
+
+    // 通过用户名查找用户
+    static async findByUsername(username) {
+        const sql = 'SELECT * FROM users WHERE username = ?';
+        try {
+            const [rows] = await db.query(sql, [username]);
+            return rows[0];
+        } catch (err) {
+            throw err;
+        }
+    }
+
+    // 通过邮箱查找用户
+    static async findByEmail(email) {
+        const sql = 'SELECT * FROM users WHERE email = ?';
+        try {
+            const [rows] = await db.query(sql, [email]);
+            return rows[0];
+        } catch (err) {
+            throw err;
+        }
+    }
+
+    // 通过ID查找用户
+    static async findById(id) {
+        const sql = 'SELECT id, username, email, full_name, user_type, status, created_at FROM users WHERE id = ?';
+        try {
+            const [rows] = await db.query(sql, [id]);
+            return rows[0];
+        } catch (err) {
+            throw err;
+        }
+    }
+
+    // 获取所有用户
+    static async findAll() {
+        const sql = 'SELECT id, username, email, full_name, user_type, status, created_at FROM users';
+        try {
+            const [rows] = await db.query(sql);
+            return rows;
+        } catch (err) {
+            throw err;
+        }
+    }
+
+    // 更新用户
+    static async update(id, userData) {
+        const { fullName, status } = userData;
+        const sql = 'UPDATE users SET full_name = ?, status = ? WHERE id = ?';
+        try {
+            const [result] = await db.query(sql, [fullName, status, id]);
+            return result.affectedRows > 0;
+        } catch (err) {
+            throw err;
+        }
+    }
+
+    // 删除用户
+    static async delete(id) {
+        const sql = 'DELETE FROM users WHERE id = ?';
+        try {
+            const [result] = await db.query(sql, [id]);
+            return result.affectedRows > 0;
+        } catch (err) {
+            throw err;
+        }
+    }
+
+    // 获取用户数量统计
+    static async getStats() {
+        const sql = 'SELECT user_type, COUNT(*) as count FROM users GROUP BY user_type';
+        try {
+            const [rows] = await db.query(sql);
+            return rows;
+        } catch (err) {
+            throw err;
+        }
+    }
+}
+
+module.exports = User;
