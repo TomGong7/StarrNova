@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>教师首页 - StarrNova</title>
+    <link rel="stylesheet" href="../Styles.css">
+    <link rel="stylesheet" href="TeacherPortal.css">
+</head>
+
+<body class="teacher-page">
+    <div class="wrapper">
+        <!-- 导航栏 -->
+        <nav>
+            <div class="container">
+                <ul>
+                    <li><a href="TeacherPortal.html" class="active">首页</a></li>
+                    <li><a href="#">我的课程</a></li>
+                    <li><a href="#">作业管理</a></li>
+                    <li><a href="#">成绩评定</a></li>
+                    <li><a href="#">数据分析</a></li>
+                    <li class="nav-right"><a href="#" onclick="logout()">退出</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- 主内容 -->
+        <main>
+            <!-- 欢迎区域 -->
+            <section class="teacher-welcome">
+                <div class="container">
+                    <div class="welcome-box">
+                        <h1>欢迎回来，教师！</h1>
+                        <p>开始你的教学管理工作</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 教师仪表板 -->
+            <section class="teacher-dashboard">
+                <div class="container">
+                    <!-- 统计卡片 -->
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">📚</div>
+                            <div class="stat-content">
+                                <h3>授课课程</h3>
+                                <p class="stat-number">5</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">👥</div>
+                            <div class="stat-content">
+                                <h3>总学生数</h3>
+                                <p class="stat-number">148</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">📝</div>
+                            <div class="stat-content">
+                                <h3>待批改作业</h3>
+                                <p class="stat-number">12</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">⭐</div>
+                            <div class="stat-content">
+                                <h3>平均评分</h3>
+                                <p class="stat-number">4.8</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 侧边栏信息面板 -->
+                    <div class="sidebar-content">
+                        <div class="info-panel">
+                            <div class="card">
+                                <div class="card-header">
+                                    个人信息
+                                </div>
+                                <div class="card-body">
+                                    <div class="info-item">
+                                        <span class="info-label">教师姓名：</span>
+                                        <span class="info-value">待输入</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">工号：</span>
+                                        <span class="info-value">待输入</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">邮箱：</span>
+                                        <span class="info-value">待输入</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">部门：</span>
+                                        <span class="info-value">待输入</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 快速操作 -->
+                        <div class="quick-actions">
+                            <div class="card">
+                                <div class="card-header">
+                                    快速操作
+                                </div>
+                                <div class="card-body">
+                                    <button class="btn btn-primary btn-block">+ 创建新课程</button>
+                                    <button class="btn btn-secondary btn-block">+ 发布作业</button>
+                                    <button class="btn btn-secondary btn-block">查看成绩统计</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 主要内容 -->
+                    <div class="main-content">
+                        <!-- 最近课程 -->
+                        <div class="card">
+                            <div class="card-header">
+                                我的课程
+                            </div>
+                            <div class="card-body">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>课程名称</th>
+                                            <th>学生数</th>
+                                            <th>学期</th>
+                                            <th>操作</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>课程名称 1</td>
+                                            <td>30</td>
+                                            <td>2024年秋季</td>
+                                            <td><a href="#">查看详情</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>课程名称 2</td>
+                                            <td>28</td>
+                                            <td>2024年秋季</td>
+                                            <td><a href="#">查看详情</a></td>
+                                        </tr>
+                                        <tr>
+                                            <td>课程名称 3</td>
+                                            <td>35</td>
+                                            <td>2024年秋季</td>
+                                            <td><a href="#">查看详情</a></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- 最新作业评改 -->
+                        <div class="card">
+                            <div class="card-header">
+                                最新作业评改
+                            </div>
+                            <div class="card-body">
+                                <div class="activity-list">
+                                    <div class="activity-item">
+                                        <div class="activity-time">2024-12-18</div>
+                                        <div class="activity-content">
+                                            <h4>批改作业：高数作业第5次</h4>
+                                            <p>已批改 25/30 份</p>
+                                        </div>
+                                    </div>
+                                    <div class="activity-item">
+                                        <div class="activity-time">2024-12-17</div>
+                                        <div class="activity-content">
+                                            <h4>发布成绩：期中考试</h4>
+                                            <p>已发布给 28 名学生</p>
+                                        </div>
+                                    </div>
+                                    <div class="activity-item">
+                                        <div class="activity-time">2024-12-16</div>
+                                        <div class="activity-content">
+                                            <h4>创建新作业：课堂练习</h4>
+                                            <p>已分配给 3 个班级</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- 页脚 -->
+        <footer>
+            <div class="container">
+                <p>&copy; 2026 StarrNova. 保留所有权利。</p>
+                <p>联系我们: info@starrnova.com</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="../Main.js"></script>
+    <script src="Teacher.js"></script>
+</body>
+
+</html>

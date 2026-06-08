@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>管理员首页 - StarrNova</title>
+    <link rel="stylesheet" href="../Styles.css">
+    <link rel="stylesheet" href="SysAdminPortal.css">
+</head>
+
+<body class="admin-page">
+    <div class="wrapper">
+        <!-- 导航栏 -->
+        <nav>
+            <div class="container">
+                <ul>
+                    <li><a href="SysAdminPortal.html" class="active">首页</a></li>
+                    <li><a href="#">用户管理</a></li>
+                    <li><a href="#">课程管理</a></li>
+                    <li><a href="#">系统设置</a></li>
+                    <li><a href="#">数据统计</a></li>
+                    <li class="nav-right"><a href="#" onclick="logout()">退出</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- 主内容 -->
+        <main>
+            <!-- 欢迎区域 -->
+            <section class="admin-welcome">
+                <div class="container">
+                    <div class="welcome-box">
+                        <h1>系统管理面板</h1>
+                        <p>管理和维护 StarrNova 平台</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 管理员仪表板 -->
+            <section class="admin-dashboard">
+                <div class="container">
+                    <!-- 系统统计卡片 -->
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">👥</div>
+                            <div class="stat-content">
+                                <h3>总用户数</h3>
+                                <p class="stat-number">1,248</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">🎓</div>
+                            <div class="stat-content">
+                                <h3>活跃课程</h3>
+                                <p class="stat-number">87</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">📊</div>
+                            <div class="stat-content">
+                                <h3>系统运行时间</h3>
+                                <p class="stat-number">99.9%</p>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">⚠️</div>
+                            <div class="stat-content">
+                                <h3>待处理告警</h3>
+                                <p class="stat-number">2</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 侧边栏管理菜单 -->
+                    <div class="sidebar-content">
+                        <div class="admin-menu">
+                            <div class="card">
+                                <div class="card-header">
+                                    管理员信息
+                                </div>
+                                <div class="card-body">
+                                    <div class="info-item">
+                                        <span class="info-label">管理员姓名：</span>
+                                        <span class="info-value">待输入</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">工号：</span>
+                                        <span class="info-value">待输入</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">邮箱：</span>
+                                        <span class="info-value">待输入</span>
+                                    </div>
+                                    <div class="info-item">
+                                        <span class="info-label">权限级别：</span>
+                                        <span class="info-value">超级管理员</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 快速操作 -->
+                        <div class="quick-actions">
+                            <div class="card">
+                                <div class="card-header">
+                                    快速操作
+                                </div>
+                                <div class="card-body">
+                                    <button class="btn btn-primary btn-block">+ 添加用户</button>
+                                    <button class="btn btn-secondary btn-block">+ 创建课程</button>
+                                    <button class="btn btn-secondary btn-block">系统设置</button>
+                                    <button class="btn btn-secondary btn-block">备份数据</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 主要内容 -->
+                    <div class="main-content">
+                        <!-- 用户统计 -->
+                        <div class="card">
+                            <div class="card-header">
+                                用户统计
+                            </div>
+                            <div class="card-body">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>用户类型</th>
+                                            <th>数量</th>
+                                            <th>今天新增</th>
+                                            <th>状态</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>学生</td>
+                                            <td>850</td>
+                                            <td>+12</td>
+                                            <td><span class="status-active">活跃</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>教师</td>
+                                            <td>125</td>
+                                            <td>+2</td>
+                                            <td><span class="status-active">活跃</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>管理员</td>
+                                            <td>8</td>
+                                            <td>0</td>
+                                            <td><span class="status-active">活跃</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>总计</td>
+                                            <td>983</td>
+                                            <td>+14</td>
+                                            <td><span class="status-active">正常</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- 系统日志 -->
+                        <div class="card">
+                            <div class="card-header">
+                                最近系统活动
+                            </div>
+                            <div class="card-body">
+                                <div class="activity-list">
+                                    <div class="activity-item">
+                                        <div class="activity-icon">✓</div>
+                                        <div class="activity-time">2024-12-18 14:30</div>
+                                        <div class="activity-content">用户注册: 新学生账号创建</div>
+                                    </div>
+                                    <div class="activity-item">
+                                        <div class="activity-icon">⚙️</div>
+                                        <div class="activity-time">2024-12-18 12:15</div>
+                                        <div class="activity-content">系统配置: 更新服务器设置</div>
+                                    </div>
+                                    <div class="activity-item">
+                                        <div class="activity-icon">📊</div>
+                                        <div class="activity-time">2024-12-18 10:00</div>
+                                        <div class="activity-content">数据备份: 自动备份已完成</div>
+                                    </div>
+                                    <div class="activity-item">
+                                        <div class="activity-icon">⚠️</div>
+                                        <div class="activity-time">2024-12-17 20:45</div>
+                                        <div class="activity-content">系统告警: 服务器磁盘使用率过高</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 系统监控 -->
+                        <div class="card">
+                            <div class="card-header">
+                                系统监控
+                            </div>
+                            <div class="card-body">
+                                <div class="monitor-item">
+                                    <div class="monitor-label">CPU 使用率</div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 45%;">45%</div>
+                                    </div>
+                                </div>
+                                <div class="monitor-item">
+                                    <div class="monitor-label">内存使用率</div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 62%;">62%</div>
+                                    </div>
+                                </div>
+                                <div class="monitor-item">
+                                    <div class="monitor-label">磁盘使用率</div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 78%;">78%</div>
+                                    </div>
+                                </div>
+                                <div class="monitor-item">
+                                    <div class="monitor-label">数据库连接</div>
+                                    <div class="progress-bar">
+                                        <div class="progress-fill" style="width: 35%;">35%</div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- 页脚 -->
+        <footer>
+            <div class="container">
+                <p>&copy; 2026 StarrNova. 保留所有权利。</p>
+                <p>联系我们: info@starrnova.com</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="../Main.js"></script>
+    <script src="SysAdmin.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,289 @@
+/* ========================================
+   StarrNova - 管理员首页特有样式
+   ======================================== */
+
+.admin-page {
+    background-color: #f5f5f5;
+}
+
+/* ---- 欢迎区域 ---- */
+.admin-welcome {
+    background: linear-gradient(135deg, #e74c3c 0%, #c0392b 100%);
+    color: white;
+    padding: 40px 20px;
+}
+
+.welcome-box {
+    text-align: center;
+}
+
+.admin-welcome h1 {
+    color: white;
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.admin-welcome p {
+    font-size: 16px;
+    opacity: 0.95;
+}
+
+/* ---- 仪表板布局 ---- */
+.admin-dashboard {
+    padding: 40px 20px;
+}
+
+.admin-dashboard .container {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+}
+
+/* ---- 统计卡片网格 ---- */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.stat-card {
+    background: white;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    transition: all 0.3s ease;
+}
+
+.stat-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.stat-icon {
+    font-size: 36px;
+    flex-shrink: 0;
+}
+
+.stat-content {
+    flex: 1;
+}
+
+.stat-content h3 {
+    font-size: 13px;
+    color: #999;
+    margin: 0 0 5px 0;
+    font-weight: 600;
+}
+
+.stat-number {
+    font-size: 28px;
+    font-weight: 700;
+    color: #e74c3c;
+    margin: 0;
+}
+
+/* ---- 内容布局 ---- */
+.sidebar-content {
+    display: grid;
+    grid-template-columns: 280px 1fr;
+    gap: 25px;
+    align-items: start;
+}
+
+.main-content {
+    grid-column: 1 / -1;
+}
+
+/* ---- 侧边栏管理菜单 ---- */
+.admin-menu .card {
+    position: sticky;
+    top: 100px;
+}
+
+.info-item {
+    display: flex;
+    flex-direction: column;
+    padding: 12px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.info-item:last-child {
+    border-bottom: none;
+}
+
+.info-label {
+    font-weight: 600;
+    color: #2c3e50;
+    font-size: 13px;
+    margin-bottom: 4px;
+}
+
+.info-value {
+    color: #666;
+    font-size: 14px;
+}
+
+/* ---- 快速操作 ---- */
+.quick-actions .card-body {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.quick-actions .btn-block {
+    margin: 0;
+    padding: 10px;
+    background-color: #e74c3c;
+}
+
+.quick-actions .btn-block:hover {
+    background-color: #c0392b;
+}
+
+.quick-actions .btn-secondary {
+    background-color: #95a5a6;
+}
+
+.quick-actions .btn-secondary:hover {
+    background-color: #7f8c8d;
+}
+
+/* ---- 活动列表 ---- */
+.activity-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.activity-item {
+    display: flex;
+    gap: 15px;
+    padding: 15px;
+    background: #f9f9f9;
+    border-radius: 6px;
+    border-left: 4px solid #e74c3c;
+    align-items: flex-start;
+}
+
+.activity-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+}
+
+.activity-time {
+    font-size: 12px;
+    color: #999;
+    font-weight: 600;
+    flex-shrink: 0;
+}
+
+.activity-content {
+    color: #2c3e50;
+    font-size: 13px;
+    flex: 1;
+}
+
+/* ---- 监控条 ---- */
+.monitor-item {
+    margin-bottom: 20px;
+}
+
+.monitor-item:last-child {
+    margin-bottom: 0;
+}
+
+.monitor-label {
+    font-size: 13px;
+    color: #2c3e50;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.progress-bar {
+    background: #e0e0e0;
+    border-radius: 4px;
+    height: 24px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    background: linear-gradient(90deg, #e74c3c 0%, #c0392b 100%);
+    color: white;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: 600;
+    transition: width 0.3s ease;
+}
+
+/* ---- 状态指示器 ---- */
+.status-active {
+    background-color: #d4edda;
+    color: #155724;
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.status-inactive {
+    background-color: #f8d7da;
+    color: #721c24;
+    padding: 4px 8px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* ---- 导航栏右对齐 ---- */
+nav .nav-right {
+    margin-left: auto;
+}
+
+/* ---- 响应式设计 ---- */
+@media (max-width: 1024px) {
+    .sidebar-content {
+        grid-template-columns: 1fr;
+    }
+
+    .admin-menu .card {
+        position: relative;
+        top: auto;
+    }
+
+    .quick-actions {
+        grid-column: 1;
+    }
+}
+
+@media (max-width: 768px) {
+    .admin-welcome {
+        padding: 30px 20px;
+    }
+
+    .admin-welcome h1 {
+        font-size: 24px;
+    }
+
+    .admin-dashboard {
+        padding: 25px 20px;
+    }
+
+    .stats-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .stat-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .activity-item {
+        flex-wrap: wrap;
+    }
+}

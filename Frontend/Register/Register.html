@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>注册账号 - StarrNova</title>
+    <link rel="stylesheet" href="../Styles.css">
+    <link rel="stylesheet" href="Register.css">
+</head>
+
+<body class="register-page">
+    <div class="wrapper">
+        <!-- 导航栏 -->
+        <nav>
+            <div class="container">
+                <ul>
+                    <li><a href="../StarrNova.html">首页</a></li>
+                    <li><a href="../About/About.html">关于我们</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- 主内容 -->
+        <main>
+            <section class="register-section">
+                <div class="register-container">
+                    <!-- 左侧说明 -->
+                    <div class="register-info">
+                        <h2>欢迎加入</h2>
+                        <p>创建 StarrNova 账号，开启智能教育之旅</p>
+                        <ul class="info-list">
+                            <li>✓ 快速注册</li>
+                            <li>✓ 安全可靠</li>
+                            <li>✓ 功能丰富</li>
+                            <li>✓ 随处可用</li>
+                        </ul>
+                        <p class="info-footer">已有账号？ <a href="#">前往登录</a></p>
+                    </div>
+
+                    <!-- 右侧注册表单 -->
+                    <div class="register-form-wrapper">
+                        <h1>注册新账号</h1>
+
+                        <form id="registerForm" class="register-form">
+                            <!-- 用户类型选择 -->
+                            <div class="form-group">
+                                <label for="userType">账户类型 *</label>
+                                <select id="userType" name="userType" required>
+                                    <option value="">请选择账户类型</option>
+                                    <option value="student">学生</option>
+                                    <option value="teacher">教师</option>
+                                    <option value="admin">管理员</option>
+                                </select>
+                            </div>
+
+                            <!-- 用户名 -->
+                            <div class="form-group">
+                                <label for="username">用户名 *</label>
+                                <input type="text" id="username" name="username" placeholder="请输入用户名" required>
+                            </div>
+
+                            <!-- 邮箱 -->
+                            <div class="form-group">
+                                <label for="email">邮箱地址 *</label>
+                                <input type="email" id="email" name="email" placeholder="请输入邮箱地址" required>
+                            </div>
+
+                            <!-- 密码 -->
+                            <div class="form-group">
+                                <label for="password">密码 *</label>
+                                <input type="password" id="password" name="password" placeholder="请输入密码（至少8位，包含大小写字母和数字）" required>
+                                <small class="password-hint">密码至少8位，需包含大小写字母和数字</small>
+                            </div>
+
+                            <!-- 确认密码 -->
+                            <div class="form-group">
+                                <label for="confirmPassword">确认密码 *</label>
+                                <input type="password" id="confirmPassword" name="confirmPassword" placeholder="请再次输入密码" required>
+                            </div>
+
+                            <!-- 真实姓名 -->
+                            <div class="form-group">
+                                <label for="fullName">真实姓名 *</label>
+                                <input type="text" id="fullName" name="fullName" placeholder="请输入真实姓名" required>
+                            </div>
+
+                            <!-- 学号/工号 -->
+                            <div class="form-group">
+                                <label for="studentId">学号/工号 *</label>
+                                <input type="text" id="studentId" name="studentId" placeholder="请输入学号或工号" required>
+                            </div>
+
+                            <!-- 条款同意 -->
+                            <div class="form-group checkbox">
+                                <input type="checkbox" id="terms" name="terms" required>
+                                <label for="terms" class="terms-label">
+                                    我已阅读并同意 <a href="#">服务条款</a> 和 <a href="#">隐私政策</a>
+                                </label>
+                            </div>
+
+                            <!-- 提交按钮 -->
+                            <button type="submit" class="btn btn-primary btn-block">注册账号</button>
+                        </form>
+
+                        <p class="form-footer">已有账号？ <a href="#">立即登录</a></p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- 页脚 -->
+        <footer>
+            <div class="container">
+                <p>&copy; 2026 StarrNova. 保留所有权利。</p>
+                <p>联系我们: info@starrnova.com</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="../Main.js"></script>
+    <script src="Register.js"></script>
+</body>
+
+</html>

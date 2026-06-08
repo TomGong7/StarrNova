@@ -1,0 +1,198 @@
+/* ========================================
+   StarrNova - 欢迎页特有样式
+   ======================================== */
+
+.welcome-page {
+    background-color: #f5f5f5;
+}
+
+/* ---- 英雄区域 ---- */
+.hero {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 100px 20px;
+    text-align: center;
+    min-height: 500px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.hero-content h1 {
+    color: white;
+    font-size: 48px;
+    margin-bottom: 20px;
+    font-weight: 700;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.hero-subtitle {
+    font-size: 24px;
+    margin-bottom: 15px;
+    font-weight: 300;
+}
+
+.hero-description {
+    font-size: 16px;
+    margin-bottom: 40px;
+    opacity: 0.95;
+}
+
+.hero-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.hero .btn {
+    padding: 15px 40px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.hero .btn-primary {
+    background-color: white;
+    color: #667eea;
+}
+
+.hero .btn-primary:hover {
+    background-color: #f0f0f0;
+}
+
+.hero .btn-secondary {
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border: 2px solid white;
+}
+
+.hero .btn-secondary:hover {
+    background-color: rgba(255, 255, 255, 0.3);
+}
+
+/* ---- 功能介绍区域 ---- */
+.features {
+    background-color: white;
+    padding: 60px 20px;
+}
+
+.features h2 {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 36px;
+}
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+}
+
+.feature-card {
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    padding: 30px 20px;
+    text-align: center;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.feature-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.feature-icon {
+    font-size: 48px;
+    margin-bottom: 15px;
+}
+
+.feature-card h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #667eea;
+}
+
+.feature-card p {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* ---- 用户角色介绍 ---- */
+.user-roles {
+    background-color: #f5f5f5;
+    padding: 60px 20px;
+}
+
+.user-roles h2 {
+    text-align: center;
+    margin-bottom: 50px;
+    font-size: 36px;
+}
+
+.roles-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+}
+
+.role-card {
+    background: white;
+    border-radius: 8px;
+    padding: 40px 25px;
+    text-align: center;
+    border-left: 4px solid #667eea;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.role-card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+}
+
+.role-card h3 {
+    font-size: 24px;
+    color: #667eea;
+    margin-bottom: 15px;
+}
+
+.role-card p {
+    color: #666;
+    font-size: 14px;
+    line-height: 1.8;
+}
+
+/* ---- 响应式设计 ---- */
+@media (max-width: 768px) {
+    .hero {
+        padding: 60px 20px;
+        min-height: auto;
+    }
+
+    .hero-content h1 {
+        font-size: 32px;
+    }
+
+    .hero-subtitle {
+        font-size: 18px;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+    }
+
+    .hero .btn {
+        width: 100%;
+    }
+
+    .features h2,
+    .user-roles h2 {
+        font-size: 28px;
+    }
+
+    .features-grid,
+    .roles-grid {
+        grid-template-columns: 1fr;
+    }
+}

@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>学生首页 - StarrNova</title>
+    <link rel="stylesheet" href="../Styles.css">
+    <link rel="stylesheet" href="StudentPortal.css">
+</head>
+
+<body class="student-page">
+    <div class="wrapper">
+        <!-- 导航栏 -->
+        <nav>
+            <div class="container">
+                <ul>
+                    <li><a href="StudentPortal.html" class="active">首页</a></li>
+                    <li><a href="#">我的课程</a></li>
+                    <li><a href="#">作业</a></li>
+                    <li><a href="#">成绩</a></li>
+                    <li class="nav-right"><a href="#" onclick="logout()">退出</a></li>
+                </ul>
+            </div>
+        </nav>
+
+        <!-- 主内容 -->
+        <main>
+            <!-- 欢迎区域 -->
+            <section class="student-welcome">
+                <div class="container">
+                    <div class="welcome-box">
+                        <h1>欢迎回来，学生！</h1>
+                        <p>开始你的学习之旅吧</p>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 学生信息板 -->
+            <section class="student-dashboard">
+                <div class="container">
+                    <!-- 用户信息卡片 -->
+                    <div class="info-panel">
+                        <div class="card">
+                            <div class="card-header">
+                                个人信息
+                            </div>
+                            <div class="card-body">
+                                <div class="info-item">
+                                    <span class="info-label">学生姓名：</span>
+                                    <span class="info-value">待输入</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">学号：</span>
+                                    <span class="info-value">待输入</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">邮箱：</span>
+                                    <span class="info-value">待输入</span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label">注册时间：</span>
+                                    <span class="info-value">待输入</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- 课程概览 -->
+                    <div class="main-content">
+                        <div class="card">
+                            <div class="card-header">
+                                我的课程
+                            </div>
+                            <div class="card-body">
+                                <div class="course-list">
+                                    <div class="course-item">
+                                        <div class="course-icon">📚</div>
+                                        <div class="course-details">
+                                            <h4>课程名称</h4>
+                                            <p>授课教师 | 2024年秋季</p>
+                                        </div>
+                                        <button class="btn btn-small btn-primary">进入课程</button>
+                                    </div>
+                                    <div class="course-item">
+                                        <div class="course-icon">📚</div>
+                                        <div class="course-details">
+                                            <h4>课程名称</h4>
+                                            <p>授课教师 | 2024年秋季</p>
+                                        </div>
+                                        <button class="btn btn-small btn-primary">进入课程</button>
+                                    </div>
+                                    <div class="course-item">
+                                        <div class="course-icon">📚</div>
+                                        <div class="course-details">
+                                            <h4>课程名称</h4>
+                                            <p>授课教师 | 2024年秋季</p>
+                                        </div>
+                                        <button class="btn btn-small btn-primary">进入课程</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- 待处理任务 -->
+                        <div class="card">
+                            <div class="card-header">
+                                待处理任务
+                            </div>
+                            <div class="card-body">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>任务类型</th>
+                                            <th>课程</th>
+                                            <th>截止日期</th>
+                                            <th>状态</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>作业提交</td>
+                                            <td>课程名称</td>
+                                            <td>2024-12-20</td>
+                                            <td><span class="status-pending">未提交</span></td>
+                                        </tr>
+                                        <tr>
+                                            <td>在线测试</td>
+                                            <td>课程名称</td>
+                                            <td>2024-12-22</td>
+                                            <td><span class="status-pending">进行中</span></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- 页脚 -->
+        <footer>
+            <div class="container">
+                <p>&copy; 2026 StarrNova. 保留所有权利。</p>
+                <p>联系我们: info@starrnova.com</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="../Main.js"></script>
+    <script src="Student.js"></script>
+</body>
+
+</html>

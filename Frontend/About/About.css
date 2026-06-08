@@ -1,0 +1,167 @@
+/* ========================================
+   StarrNova - 关于页面特有样式
+   ======================================== */
+
+.about-page {
+    background-color: #f5f5f5;
+}
+
+/* ---- 关于页面头部 ---- */
+.about-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.about-header h1 {
+    color: white;
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.about-header p {
+    font-size: 18px;
+    opacity: 0.95;
+}
+
+/* ---- 内容区域 ---- */
+.about-content {
+    background-color: white;
+    padding: 60px 20px;
+}
+
+.content-section {
+    margin-bottom: 50px;
+    padding-bottom: 40px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.content-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.content-section h2 {
+    color: #667eea;
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+.content-section p {
+    color: #666;
+    line-height: 1.8;
+    font-size: 15px;
+}
+
+/* ---- 优势列表 ---- */
+.advantages-list {
+    list-style: none;
+    padding: 0;
+}
+
+.advantages-list li {
+    padding: 15px 0;
+    padding-left: 30px;
+    color: #666;
+    line-height: 1.8;
+    position: relative;
+}
+
+.advantages-list li:before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #667eea;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.advantages-list strong {
+    color: #2c3e50;
+}
+
+/* ---- 发展路线图 ---- */
+.roadmap {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 25px;
+    margin-top: 30px;
+}
+
+.roadmap-item {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 30px 20px;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.2);
+    transition: all 0.3s ease;
+}
+
+.roadmap-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(102, 126, 234, 0.3);
+}
+
+.roadmap-item h3 {
+    color: white;
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.roadmap-item p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 14px;
+}
+
+/* ---- 联系信息 ---- */
+.contact-info {
+    background: #f9f9f9;
+    padding: 25px;
+    border-radius: 8px;
+    border-left: 4px solid #667eea;
+}
+
+.contact-info p {
+    margin: 12px 0;
+    color: #2c3e50;
+    font-size: 15px;
+}
+
+.contact-info strong {
+    color: #667eea;
+}
+
+/* ---- 响应式设计 ---- */
+@media (max-width: 768px) {
+    .about-header {
+        padding: 40px 20px;
+    }
+
+    .about-header h1 {
+        font-size: 28px;
+    }
+
+    .about-header p {
+        font-size: 16px;
+    }
+
+    .about-content {
+        padding: 40px 20px;
+    }
+
+    .content-section {
+        margin-bottom: 30px;
+        padding-bottom: 25px;
+    }
+
+    .content-section h2 {
+        font-size: 22px;
+    }
+
+    .roadmap {
+        grid-template-columns: 1fr;
+    }
+}
