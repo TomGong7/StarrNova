@@ -1,16 +1,16 @@
 // ========================================
-// 加密工具
+// Crypto Utilities
 // ========================================
 
 const bcrypt = require('bcryptjs');
 
-// 密码加密
+// Hash password
 async function hashPassword(password) {
     const salt = await bcrypt.genSalt(10);
     return bcrypt.hash(password, salt);
 }
 
-// 密码验证
+// Verify password
 async function comparePassword(password, hash) {
     return bcrypt.compare(password, hash);
 }

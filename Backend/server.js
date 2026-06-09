@@ -1,6 +1,6 @@
 // ========================================
-// StarrNova 本地开发服务器
-// 配置: localhost:3000
+// StarrNova Development Server
+// Config: localhost:3000
 // ========================================
 
 const express = require('express');
@@ -11,15 +11,15 @@ require('dotenv').config();
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// 导入模块
+// Import modules
 const db = require('./config/db');
 const errorHandler = require('./middleware/errorHandler');
 
-// 导入路由
+// Import routes
 const healthRoutes = require('./routes/health');
 const userRoutes = require('./routes/users');
 
-// 中间件配置
+// Middleware configuration
 app.use(cors({
     origin: process.env.CORS_ORIGIN || 'http://localhost:3000',
     credentials: true
@@ -27,26 +27,20 @@ app.use(cors({
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-// 静态文件服务（Frontend 文件夹中的所有文件）
+// Serve static files from the Frontend directory
 app.use(express.static(path.join(__dirname, '../Frontend')));
 
-// 日志中间件
-app.use((req, res, next) => {
-    console.log(`${new Date().toISOString()} - ${req.method} ${req.path}`);
-    next();
-});
-
 // ========================================
-// API 路由
+// API Routes
 // ========================================
 
-// 健康检查路由
+// Health check routes
 app.use('/api', healthRoutes);
 
-// 用户相关路由
+// User routes
 app.use('/api/users', userRoutes);
 
-// 前端页面路由配置
+// Frontend page routes
 const pageRoutes = {
     '/': 'StarrNova.html',
     '/about': 'About/About.html',
@@ -56,6 +50,11 @@ const pageRoutes = {
     '/admin': 'SysAdmin/SysAdminPortal.html'
 };
 
+// Fix: redirect /Frontend/* requests to root (e.g. /Frontend/StarrNova.html → /StarrNova.html)
+app.use('/Frontend', (req, res) => {
+    res.redirect(req.url);
+});
+
 Object.entries(pageRoutes).forEach(([route, file]) => {
     app.get(route, (req, res) => {
         res.sendFile(path.join(__dirname, '../Frontend', file));
@@ -63,70 +62,42 @@ Object.entries(pageRoutes).forEach(([route, file]) => {
 });
 
 // ========================================
-// 错误处理
+// Error Handling
 // ========================================
 
-// 404 处理
+// 404 handler
 app.use((req, res) => {
     res.status(404).json({
         success: false,
-        message: '404 - 请求的资源不存在',
+        message: '404 - Resource not found',
         path: req.path
     });
 });
 
-// 错误处理中间件
+// Error handler middleware
 app.use(errorHandler);
 
 // ========================================
-// 服务器启动
+// Server Startup
 // ========================================
 
 async function startServer() {
     try {
-        // 测试数据库连接
+        // Verify database connection
         await db.testConnection();
 
-        app.listen(PORT, () => {
-            console.log(`
-╔════════════════════════════════════════╗
-║   StarrNova 开发服务器已启动           ║
-╠════════════════════════════════════════╣
-║   URL: http://localhost:${PORT}           ║
-║   环境: ${process.env.NODE_ENV || 'development'}                 ║
-║                                        ║
-║   API 文档:                            ║
-║   - GET  /api/health        (健康检查) ║
-║   - POST /api/users/register(注册)    ║
-║   - POST /api/users/login   (登录)    ║
-║   - GET  /api/users/profile (个人信息)║
-║   - GET  /api/users/list    (用户列表)║
-║   - GET  /api/users/stats   (用户统计)║
-║                                        ║
-║   前端页面:                            ║
-║   - http://localhost:${PORT}/          (首页)  ║
-║   - http://localhost:${PORT}/about     (关于)  ║
-║   - http://localhost:${PORT}/register  (注册)  ║
-║   - http://localhost:${PORT}/student   (学生)  ║
-║   - http://localhost:${PORT}/teacher   (教师)  ║
-║   - http://localhost:${PORT}/admin     (管理员)║
-║                                        ║
-║   按 Ctrl+C 停止服务器                 ║
-╚════════════════════════════════════════╝
-            `);
-        });
+        app.listen(PORT, () => {});
     } catch (err) {
-        console.error('服务器启动失败:', err);
+        console.error('Failed to start server:', err.message);
         process.exit(1);
     }
 }
 
-// 优雅关闭
+// Graceful shutdown
 process.on('SIGINT', () => {
-    console.log('\n\n服务器已停止');
+    console.log('\nServer stopped.');
     process.exit(0);
 });
 
-// 启动服务器
+// Start
 startServer();
-

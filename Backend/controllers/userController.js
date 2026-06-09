@@ -1,5 +1,5 @@
 // ========================================
-// 用户控制器
+// User Controller
 // ========================================
 
 const User = require('../models/User');
@@ -7,56 +7,56 @@ const { hashPassword, comparePassword } = require('../utils/crypto');
 const { generateToken } = require('../middleware/auth');
 const { sendSuccess, sendError } = require('../utils/response');
 
-// 用户注册
+// User registration
 async function register(req, res) {
     try {
         const { username, email, password, fullName, userType, studentId } = req.body;
 
-        // 输入验证
+        // Input validation
         if (!username || !email || !password || !fullName || !userType) {
-            return sendError(res, '缺少必要的字段', 400);
+            return sendError(res, 'Missing required fields', 400);
         }
 
-        // 检查用户名/邮箱是否存在
+        // Check if username/email already exists
         const [existingUser, existingEmail] = await Promise.all([
             User.findByUsername(username),
             User.findByEmail(email)
         ]);
 
-        if (existingUser) return sendError(res, '用户名已存在', 409);
-        if (existingEmail) return sendError(res, '邮箱已被注册', 409);
+        if (existingUser) return sendError(res, 'Username already exists', 409);
+        if (existingEmail) return sendError(res, 'Email already registered', 409);
 
-        // 密码加密并创建用户
+        // Hash password and create user
         const hashedPassword = await hashPassword(password);
         const userId = await User.create({
             username, email, password: hashedPassword, fullName, userType, studentId
         });
 
-        sendSuccess(res, { userId }, '注册成功', 201);
+        sendSuccess(res, { userId }, 'Registration successful', 201);
     } catch (err) {
-        console.error('注册错误:', err);
-        sendError(res, '注册失败', 500, err);
+        console.error('Registration error:', err);
+        sendError(res, 'Registration failed', 500, err);
     }
 }
 
-// 用户登录
+// User login
 async function login(req, res) {
     try {
         const { username, password } = req.body;
 
-        // 输入验证
+        // Input validation
         if (!username || !password) {
-            return sendError(res, '用户名和密码不能为空', 400);
+            return sendError(res, 'Username and password are required', 400);
         }
 
-        // 查找用户并验证密码
+        // Find user and verify password
         const user = await User.findByUsername(username);
-        if (!user) return sendError(res, '用户名或密码错误', 401);
+        if (!user) return sendError(res, 'Invalid username or password', 401);
 
         const isPasswordValid = await comparePassword(password, user.password);
-        if (!isPasswordValid) return sendError(res, '用户名或密码错误', 401);
+        if (!isPasswordValid) return sendError(res, 'Invalid username or password', 401);
 
-        // 生成 token
+        // Generate token
         const token = generateToken(user.id, user.user_type);
         sendSuccess(res, {
             token,
@@ -67,44 +67,44 @@ async function login(req, res) {
                 fullName: user.full_name,
                 userType: user.user_type
             }
-        }, '登录成功');
+        }, 'Login successful');
     } catch (err) {
-        console.error('登录错误:', err);
-        sendError(res, '登录失败', 500, err);
+        console.error('Login error:', err);
+        sendError(res, 'Login failed', 500, err);
     }
 }
 
-// 获取用户信息
+// Get user profile
 async function getUserInfo(req, res) {
     try {
         const user = await User.findById(req.user.userId);
-        if (!user) return sendError(res, '用户不存在', 404);
+        if (!user) return sendError(res, 'User not found', 404);
         sendSuccess(res, { user });
     } catch (err) {
-        console.error('获取用户信息错误:', err);
-        sendError(res, '获取用户信息失败', 500, err);
+        console.error('Get user info error:', err);
+        sendError(res, 'Failed to get user info', 500, err);
     }
 }
 
-// 获取所有用户
+// Get all users
 async function getAllUsers(req, res) {
     try {
         const users = await User.findAll();
         sendSuccess(res, { users });
     } catch (err) {
-        console.error('获取用户列表错误:', err);
-        sendError(res, '获取用户列表失败', 500, err);
+        console.error('Get user list error:', err);
+        sendError(res, 'Failed to get user list', 500, err);
     }
 }
 
-// 获取用户统计
+// Get user stats
 async function getUserStats(req, res) {
     try {
         const stats = await User.getStats();
         sendSuccess(res, { stats });
     } catch (err) {
-        console.error('获取用户统计错误:', err);
-        sendError(res, '获取用户统计失败', 500, err);
+        console.error('Get user stats error:', err);
+        sendError(res, 'Failed to get user stats', 500, err);
     }
 }
 

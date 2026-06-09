@@ -1,5 +1,5 @@
 // ========================================
-// 数据库配置
+// Database Configuration
 // ========================================
 
 const mysql = require('mysql2/promise');
@@ -16,15 +16,11 @@ const pool = mysql.createPool({
     queueLimit: 0
 });
 
-// 测试数据库连接
+// Test database connection — silent on success, throws on failure
 async function testConnection() {
-    try {
-        const connection = await pool.getConnection();
-        console.log('✓ 数据库连接成功');
-        connection.release();
-    } catch (err) {
-        console.error('✗ 数据库连接失败:', err.message);
-    }
+    const connection = await pool.getConnection();
+    connection.release();
+    return true;
 }
 
 module.exports = {

@@ -1,11 +1,11 @@
 // ========================================
-// 用户数据库模型
+// User Database Model
 // ========================================
 
 const db = require('../config/db');
 
 class User {
-    // 创建用户表
+    // Create users table
     static async createTable() {
         const sql = `
             CREATE TABLE IF NOT EXISTS users (
@@ -23,13 +23,13 @@ class User {
         `;
         try {
             await db.query(sql);
-            console.log('✓ users 表已创建或已存在');
+            console.log('✓ users table created or already exists');
         } catch (err) {
-            console.error('创建 users 表失败:', err);
+            console.error('Failed to create users table:', err);
         }
     }
 
-    // 创建用户
+    // Create new user
     static async create(userData) {
         const { username, email, password, fullName, userType, studentId } = userData;
         const sql = 'INSERT INTO users (username, email, password, full_name, user_type, student_id) VALUES (?, ?, ?, ?, ?, ?)';
@@ -41,7 +41,7 @@ class User {
         }
     }
 
-    // 通过用户名查找用户
+    // Find user by username
     static async findByUsername(username) {
         const sql = 'SELECT * FROM users WHERE username = ?';
         try {
@@ -52,7 +52,7 @@ class User {
         }
     }
 
-    // 通过邮箱查找用户
+    // Find user by email
     static async findByEmail(email) {
         const sql = 'SELECT * FROM users WHERE email = ?';
         try {
@@ -63,7 +63,7 @@ class User {
         }
     }
 
-    // 通过ID查找用户
+    // Find user by ID
     static async findById(id) {
         const sql = 'SELECT id, username, email, full_name, user_type, status, created_at FROM users WHERE id = ?';
         try {
@@ -74,7 +74,7 @@ class User {
         }
     }
 
-    // 获取所有用户
+    // Get all users
     static async findAll() {
         const sql = 'SELECT id, username, email, full_name, user_type, status, created_at FROM users';
         try {
@@ -85,7 +85,7 @@ class User {
         }
     }
 
-    // 更新用户
+    // Update user
     static async update(id, userData) {
         const { fullName, status } = userData;
         const sql = 'UPDATE users SET full_name = ?, status = ? WHERE id = ?';
@@ -97,7 +97,7 @@ class User {
         }
     }
 
-    // 删除用户
+    // Delete user
     static async delete(id) {
         const sql = 'DELETE FROM users WHERE id = ?';
         try {
@@ -108,7 +108,7 @@ class User {
         }
     }
 
-    // 获取用户数量统计
+    // Get user stats by type
     static async getStats() {
         const sql = 'SELECT user_type, COUNT(*) as count FROM users GROUP BY user_type';
         try {

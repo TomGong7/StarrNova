@@ -1,17 +1,17 @@
 // ========================================
-// JWT 认证中间件
+// JWT Authentication Middleware
 // ========================================
 
 const jwt = require('jsonwebtoken');
 
-// 验证 token
+// Verify token
 function verifyToken(req, res, next) {
     const token = req.headers['authorization']?.split(' ')[1];
 
     if (!token) {
         return res.status(401).json({
             success: false,
-            message: '没有提供认证令牌'
+            message: 'No authentication token provided'
         });
     }
 
@@ -22,12 +22,12 @@ function verifyToken(req, res, next) {
     } catch (err) {
         return res.status(401).json({
             success: false,
-            message: '无效的认证令牌'
+            message: 'Invalid authentication token'
         });
     }
 }
 
-// 生成 token
+// Generate token
 function generateToken(userId, userType) {
     return jwt.sign(
         { userId, userType },

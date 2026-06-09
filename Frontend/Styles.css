@@ -1,595 +1,1252 @@
 /* ========================================
-   StarrNova - 通用样式文件
-   所有界面的通用元素样式定义
+   StarrNova — Global Stylesheet
+   Order: Colors → Glass → Spacing/Radius → Typography → Transitions
+          → Reset → Glass Components → Topbar → Buttons → Inputs
+          → Select → Checkbox/Radio → Tags/Badges → Cards → Alerts
+          → Table → Modal → Divider → Avatar → Tabs → Utilities
    ======================================== */
 
-/* ---- 0. 颜色变量定义 ---- */
+/* ========================================
+   1. COLOR SYSTEM
+   ======================================== */
+
 :root {
-    /* 蓝绿色系（主色调） */
-    --primary-light: #0099cc;
-    --primary-dark: #004d7a;
-    --primary-accent: #00d4a0;
-    --primary-gradient-start: #0099cc;
-    --primary-gradient-end: #00d4a0;
-    
-    /* 深色系（导航栏/页脚背景） */
-    --dark-light: rgba(0, 77, 122, 0.8);
-    --dark-dark: rgba(0, 77, 122, 0.95);
-    --dark-medium: rgba(0, 139, 127, 0.8);
-    --dark-hover: rgba(0, 139, 127, 0.95);
-    
-    /* 中性色 */
-    --text-primary: #333;
-    --text-secondary: #666;
-    --text-tertiary: #999;
-    --text-white: #fff;
-    --text-muted: rgba(255, 255, 255, 0.85);
-    
-    /* 背景色 */
-    --bg-primary: #ffffff;
-    --bg-secondary: #f9f9f9;
-    --bg-tertiary: #f5f5f5;
-    --bg-gradient-start: #f5f7fa;
-    --bg-gradient-end: #c3cfe2;
-    
-    /* 边框色 */
-    --border-light: rgba(255, 255, 255, 0.1);
-    --border-light-2: rgba(255, 255, 255, 0.2);
-    --border-light-3: rgba(255, 255, 255, 0.3);
-    --border-accent: rgba(0, 212, 160, 0.2);
-    --border-accent-strong: rgba(0, 212, 160, 0.4);
-    --border-gray: #ddd;
-    --border-gray-light: #e0e0e0;
-    
-    /* 阴影色 */
-    --shadow-primary: rgba(0, 153, 204, 0.15);
-    --shadow-primary-strong: rgba(0, 153, 204, 0.2);
-    --shadow-primary-hover: rgba(0, 153, 204, 0.3);
-    --shadow-dark: rgba(0, 99, 153, 0.15);
-    
-    /* 状态色 */
-    --success: #27ae60;
-    --success-light: #229954;
-    --danger: #e74c3c;
-    --danger-light: #c0392b;
-    --warning: #f39c12;
-    --info: #3498db;
-    
-    /* 管理员主题色 */
-    --admin-primary: #e74c3c;
-    --admin-primary-dark: #c0392b;
-    
-    /* 透明度白色 */
-    --white-05: rgba(255, 255, 255, 0.5);
-    --white-06: rgba(255, 255, 255, 0.6);
-    --white-07: rgba(255, 255, 255, 0.7);
-    --white-075: rgba(255, 255, 255, 0.75);
-    --white-08: rgba(255, 255, 255, 0.8);
-    --white-085: rgba(255, 255, 255, 0.85);
+    --color-primary-start: #00b4d8;
+    --color-primary-end: #0077b6;
+    --color-primary: #0096c7;
+    --color-primary-light: rgba(0, 150, 199, 0.08);
+    --color-primary-medium: rgba(0, 150, 199, 0.15);
+    --color-primary-dark: #005f8a;
+
+    --gradient-primary: linear-gradient(135deg, var(--color-primary-start), var(--color-primary-end));
+    --gradient-primary-hover: linear-gradient(135deg, #00c4e8, #0088cc);
+
+    --color-bg: #f0f6fa;
+    --color-surface-solid: #ffffff;
+
+    --color-text: #1a2332;
+    --color-text-secondary: #5a6a7e;
+    --color-text-muted: #94a3b8;
+    --color-text-on-primary: #ffffff;
+
+    --color-border: rgba(255, 255, 255, 0.4);
+    --color-border-subtle: rgba(0, 119, 182, 0.08);
+
+    --color-success: #10b981;
+    --color-warning: #f59e0b;
+    --color-error: #ef4444;
+    --color-info: #3b82f6;
+
+    /* ========================================
+       2. GLASS EFFECT
+       ======================================== */
+
+    --glass-bg: rgba(255, 255, 255, 0.35);
+    --glass-bg-hover: rgba(255, 255, 255, 0.48);
+    --glass-bg-active: rgba(255, 255, 255, 0.55);
+    --glass-border: rgba(255, 255, 255, 0.3);
+    --glass-border-hover: rgba(255, 255, 255, 0.45);
+    --glass-blur: 24px;
+    --glass-shadow:
+        0 8px 32px rgba(0, 100, 150, 0.06),
+        inset 0 1px 0 rgba(255, 255, 255, 0.5),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.02);
+    --glass-shadow-hover:
+        0 12px 40px rgba(0, 100, 150, 0.1),
+        inset 0 1px 0 rgba(255, 255, 255, 0.6),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.02);
+    --glass-highlight: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.25) 0%,
+            rgba(255, 255, 255, 0.05) 40%,
+            transparent 70%);
+
+    /* ========================================
+       3. SPACING & RADIUS
+       ======================================== */
+
+    --spacing-xs: 4px;
+    --spacing-sm: 8px;
+    --spacing-md: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 32px;
+
+    --radius-xs: 3px;
+    --radius-sm: 6px;
+    --radius-md: 9px;
+    --radius-lg: 12px;
+    --radius-xl: 15px;
+    --radius-full: 9999px;
+
+    /* ========================================
+       4. TYPOGRAPHY
+       ======================================== */
+
+    --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    --font-size-xs: 12px;
+    --font-size-sm: 13px;
+    --font-size-md: 15px;
+    --font-size-lg: 18px;
+    --font-size-xl: 22px;
+    --font-size-2xl: 28px;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-semibold: 600;
+    --font-weight-bold: 700;
+
+    /* ========================================
+       5. TRANSITIONS
+       ======================================== */
+
+    --transition-fast: 150ms ease;
+    --transition-normal: 250ms ease;
+    --transition-slow: 400ms ease;
 }
 
-/* ---- 1. 全局样式 ---- */
-* {
+/* ========================================
+   6. RESET & BASE
+   ======================================== */
+
+*,
+*::before,
+*::after {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
 html {
-    scroll-behavior: smooth;
+    font-size: var(--font-size-md);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 body {
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 14px;
-    line-height: 1.6;
-    color: var(--text-primary);
-    background: linear-gradient(135deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
-    background-attachment: fixed;
+    font-family: var(--font-family);
+    color: var(--color-text);
+    background: var(--color-bg);
     min-height: 100vh;
-}
-
-/* ---- 2. 页面布局 ---- */
-.container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-}
-
-.wrapper {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-}
-
-main {
-    flex: 1;
-}
-
-/* ---- 3. 导航栏样式（磨砂玻璃效果 - 蓝绿渐变） ---- */
-nav {
-    background: linear-gradient(135deg, var(--dark-light), var(--dark-medium));
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border-bottom: 1px solid var(--border-accent);
-    color: var(--text-white);
-    padding: 15px 0;
-    box-shadow: 0 4px 20px var(--shadow-dark),
-                inset 0 1px 0 var(--border-light);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    transition: all 0.3s ease;
-}
-
-nav:hover {
-    background: linear-gradient(135deg, var(--dark-dark), var(--dark-hover));
-    box-shadow: 0 6px 24px var(--shadow-dark),
-                inset 0 1px 0 var(--border-light);
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    justify-content: flex-start;
-    gap: 30px;
-}
-
-nav a {
-    color: var(--text-muted);
-    text-decoration: none;
-    transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
-    font-weight: 500;
-    position: relative;
-}
-
-nav a:hover {
-    color: var(--primary-accent);
-}
-
-nav .active {
-    color: var(--primary-accent);
-    border-bottom: 2px solid var(--primary-accent);
-    padding-bottom: 5px;
-}
-
-/* ---- 4. 页脚样式（磨砂玻璃效果 - 蓝绿渐变） ---- */
-footer {
-    background: linear-gradient(135deg, var(--dark-light), var(--dark-medium));
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border-top: 1px solid var(--border-accent);
-    color: rgba(255, 255, 255, 0.9);
-    text-align: center;
-    padding: 30px 20px;
-    margin-top: 50px;
-    box-shadow: 0 -4px 20px var(--shadow-dark),
-                inset 0 1px 0 var(--border-light);
-}
-
-footer p {
-    margin: 5px 0;
-    font-size: 14px;
-}
-
-footer .footer-content {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    margin-top: 15px;
-}
-
-footer .footer-section {
-    flex: 1;
-    min-width: 200px;
-    padding: 10px;
-}
-
-/* ---- 5. 按钮样式（磨砂玻璃效果） ---- */
-.btn {
-    display: inline-block;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 600;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
-    text-decoration: none;
-    position: relative;
-    overflow: hidden;
-}
-
-.btn::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: rgba(255, 255, 255, 0.2);
-    backdrop-filter: blur(2px);
-    transition: left 0.3s ease;
-    z-index: -1;
-}
-
-.btn:hover::before {
-    left: 0;
-}
-
-.btn-primary {
-    background: linear-gradient(135deg, rgba(0, 153, 204, 0.8), rgba(0, 212, 160, 0.8));
-    backdrop-filter: blur(8px);
-    color: var(--text-white);
-    border: 1px solid rgba(0, 212, 160, 0.3);
-    box-shadow: 0 4px 12px var(--shadow-primary),
-                inset 0 1px 0 var(--white-07);
-}
-
-.btn-primary:hover {
-    background: linear-gradient(135deg, var(--primary-light), var(--primary-accent));
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px var(--shadow-primary-hover),
-                inset 0 1px 0 var(--white-08);
-}
-
-.btn-secondary {
-    background: rgba(149, 165, 166, 0.7);
-    backdrop-filter: blur(8px);
-    color: var(--text-white);
-    border: 1px solid rgba(149, 165, 166, 0.3);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
-
-.btn-secondary:hover {
-    background: rgba(127, 140, 141, 0.85);
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
-}
-
-.btn-success {
-    background: linear-gradient(135deg, rgba(39, 174, 96, 0.8), rgba(34, 153, 84, 0.8));
-    backdrop-filter: blur(8px);
-    color: var(--text-white);
-    border: 1px solid rgba(39, 174, 96, 0.3);
-    box-shadow: 0 4px 12px rgba(39, 174, 96, 0.2);
-}
-
-.btn-success:hover {
-    background: linear-gradient(135deg, var(--success), var(--success-light));
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(39, 174, 96, 0.3);
-}
-
-.btn-danger {
-    background: linear-gradient(135deg, rgba(231, 76, 60, 0.8), rgba(192, 57, 43, 0.8));
-    backdrop-filter: blur(8px);
-    color: var(--text-white);
-    border: 1px solid rgba(231, 76, 60, 0.3);
-    box-shadow: 0 4px 12px rgba(231, 76, 60, 0.2);
-}
-
-.btn-danger:hover {
-    background: linear-gradient(135deg, var(--danger), var(--danger-light));
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(231, 76, 60, 0.3);
-}
-
-/* ---- 6. 表单样式（磨砂玻璃效果） ---- */
-form {
-    max-width: 500px;
-    margin: 20px auto;
-}
-
-.form-group {
-    margin-bottom: 15px;
-}
-
-label {
-    display: block;
-    margin-bottom: 5px;
-    font-weight: 600;
-    color: var(--primary-dark);
-}
-
-input[type="text"],
-input[type="email"],
-input[type="password"],
-input[type="number"],
-input[type="date"],
-select,
-textarea {
-    width: 100%;
-    padding: 10px 12px;
-    background: var(--white-06);
-    backdrop-filter: blur(8px);
-    border: 1px solid rgba(189, 195, 199, 0.3);
-    border-radius: 8px;
-    font-size: 14px;
-    font-family: inherit;
-    transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
-    box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.05);
-    color: var(--text-primary);
-}
-
-input[type="text"]:focus,
-input[type="email"]:focus,
-input[type="password"]:focus,
-input[type="number"]:focus,
-input[type="date"]:focus,
-select:focus,
-textarea:focus {
-    outline: none;
-    background: var(--white-085);
-    border-color: rgba(0, 153, 204, 0.5);
-    box-shadow: 0 0 0 3px rgba(0, 153, 204, 0.1),
-                inset 0 1px 2px rgba(0, 0, 0, 0.05);
-}
-
-textarea {
-    resize: vertical;
-    min-height: 100px;
-}
-
-/* ---- 7. 消息提示样式（磨砂玻璃效果） ---- */
-.alert {
-    padding: 15px 16px;
-    margin: 15px 0;
-    border-radius: 8px;
-    border-left: 4px solid;
-    backdrop-filter: blur(6px);
-    -webkit-backdrop-filter: blur(6px);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    animation: slideIn 0.3s cubic-bezier(0.23, 1, 0.320, 1);
-}
-
-@keyframes slideIn {
-    from {
-        transform: translateY(-10px);
-        opacity: 0;
-    }
-    to {
-        transform: translateY(0);
-        opacity: 1;
-    }
-}
-
-.alert-success {
-    background: rgba(212, 237, 218, 0.7);
-    color: #155724;
-    border-color: var(--success);
-}
-
-.alert-danger {
-    background: rgba(248, 215, 218, 0.7);
-    color: #721c24;
-    border-color: #f5c6cb;
-}
-
-.alert-warning {
-    background: rgba(255, 243, 205, 0.7);
-    color: #856404;
-    border-color: #ffeeba;
-}
-
-.alert-info {
-    background: rgba(209, 236, 241, 0.7);
-    color: #0c5460;
-    border-color: #bee5eb;
-}
-
-/* ---- 8. 标题样式 ---- */
-h1, h2, h3, h4, h5, h6 {
-    color: var(--primary-dark);
-    margin-bottom: 10px;
-    font-weight: 600;
-}
-
-h1 {
-    font-size: 32px;
-    margin-bottom: 20px;
-}
-
-h2 {
-    font-size: 24px;
-    margin-bottom: 15px;
-}
-
-h3 {
-    font-size: 20px;
-    margin-bottom: 12px;
-}
-
-/* ---- 9. 文本样式 ---- */
-p {
-    margin-bottom: 10px;
-    line-height: 1.8;
 }
 
 a {
-    color: var(--primary-light);
+    color: var(--color-primary);
     text-decoration: none;
-    transition: color 0.3s ease;
 }
 
 a:hover {
-    color: var(--primary-accent);
+    color: var(--color-primary-dark);
 }
 
-/* ---- 10. 表格样式（磨砂玻璃效果） ---- */
-table {
+img {
+    max-width: 100%;
+    display: block;
+}
+
+/* ========================================
+   7. GLASS COMPONENTS
+   ======================================== */
+
+.glass {
+    background:
+        var(--glass-highlight) no-repeat,
+        var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur)) saturate(1.2);
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.2);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--glass-shadow);
+    transition: all var(--transition-normal);
+}
+
+.glass:hover {
+    background:
+        var(--glass-highlight) no-repeat,
+        var(--glass-bg-hover);
+    border-color: var(--glass-border-hover);
+    box-shadow: var(--glass-shadow-hover);
+}
+
+.glass-inner {
+    background:
+        var(--glass-highlight) no-repeat,
+        var(--glass-bg);
+    backdrop-filter: blur(calc(var(--glass-blur) - 4px)) saturate(1.1);
+    -webkit-backdrop-filter: blur(calc(var(--glass-blur) - 4px)) saturate(1.1);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--glass-shadow);
+    transition: all var(--transition-normal);
+}
+
+.glass-inner:hover {
+    background:
+        var(--glass-highlight) no-repeat,
+        var(--glass-bg-hover);
+    border-color: var(--glass-border-hover);
+    box-shadow: var(--glass-shadow-hover);
+}
+
+/* ========================================
+   8. NAVIGATION BAR
+   ======================================== */
+
+nav {
+    position: fixed;
+    top: var(--spacing-md);
+    left: var(--spacing-md);
+    right: var(--spacing-md);
+    z-index: 1000;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    background:
+        var(--glass-highlight) no-repeat,
+        var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur)) saturate(1.2);
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.2);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--glass-shadow);
+}
+
+nav .container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xs);
+    list-style: none;
+}
+
+nav ul li a {
+    display: block;
+    padding: var(--spacing-xs) var(--spacing-md);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary);
+    text-decoration: none;
+    border-radius: var(--radius-sm);
+    transition: all var(--transition-fast);
+}
+
+nav ul li a:hover {
+    color: var(--color-primary);
+    background: var(--color-primary-light);
+}
+
+nav ul li a.active {
+    color: var(--color-text-on-primary);
+    background: var(--gradient-primary);
+    box-shadow: 0 2px 8px rgba(0, 119, 182, 0.2);
+}
+
+nav ul li.nav-right {
+    margin-left: auto;
+}
+
+/* ========================================
+   9. BUTTONS
+   ======================================== */
+
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-family: var(--font-family);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    line-height: 1;
+    border: 1px solid transparent;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+    outline: none;
+    white-space: nowrap;
+    user-select: none;
+}
+
+.btn:focus-visible {
+    box-shadow: 0 0 0 3px rgba(0, 150, 199, 0.3);
+}
+
+.btn-primary {
+    background: var(--gradient-primary);
+    color: var(--color-text-on-primary);
+    border: none;
+    box-shadow: 0 2px 8px rgba(0, 119, 182, 0.2);
+}
+
+.btn-primary:hover {
+    background: var(--gradient-primary-hover);
+    box-shadow: 0 4px 16px rgba(0, 119, 182, 0.3);
+    transform: translateY(-1px);
+}
+
+.btn-primary:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 4px rgba(0, 119, 182, 0.2);
+}
+
+.btn-secondary {
+    background:
+        var(--glass-highlight) no-repeat,
+        var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur)) saturate(1.2);
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.2);
+    color: var(--color-text);
+    border: 1px solid var(--glass-border);
+    box-shadow: var(--glass-shadow);
+}
+
+.btn-secondary:hover {
+    background:
+        var(--glass-highlight) no-repeat,
+        var(--glass-bg-hover);
+    border-color: var(--glass-border-hover);
+    box-shadow: var(--glass-shadow-hover);
+}
+
+.btn-ghost {
+    background: transparent;
+    color: var(--color-text-secondary);
+    border: none;
+}
+
+.btn-ghost:hover {
+    background: var(--color-primary-light);
+    color: var(--color-primary);
+}
+
+.btn-danger {
+    background: var(--color-error);
+    color: #ffffff;
+    border: none;
+    box-shadow: 0 2px 8px rgba(239, 68, 68, 0.2);
+}
+
+.btn-danger:hover {
+    background: #dc2626;
+    box-shadow: 0 4px 16px rgba(239, 68, 68, 0.3);
+    transform: translateY(-1px);
+}
+
+.btn-sm {
+    padding: var(--spacing-xs) var(--spacing-sm);
+    font-size: var(--font-size-xs);
+    border-radius: var(--radius-xs);
+}
+
+.btn-lg {
+    padding: var(--spacing-md) var(--spacing-xl);
+    font-size: var(--font-size-md);
+    border-radius: var(--radius-md);
+}
+
+.btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* ========================================
+   10. INPUTS
+   ======================================== */
+
+.input {
     width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-    background: rgba(255, 255, 255, 0.6);
-    backdrop-filter: blur(8px);
-    border-radius: 8px;
-    overflow: hidden;
-    box-shadow: 0 4px 12px rgba(31, 38, 135, 0.08);
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-family: var(--font-family);
+    font-size: var(--font-size-sm);
+    color: var(--color-text);
+    background:
+        var(--glass-highlight) no-repeat,
+        var(--glass-bg);
+    backdrop-filter: blur(calc(var(--glass-blur) - 4px)) saturate(1.1);
+    -webkit-backdrop-filter: blur(calc(var(--glass-blur) - 4px)) saturate(1.1);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--glass-shadow);
+    outline: none;
+    transition: all var(--transition-fast);
 }
 
-table th {
-    background: linear-gradient(135deg, rgba(0, 77, 122, 0.7), rgba(0, 139, 127, 0.5));
-    backdrop-filter: blur(8px);
-    color: white;
-    padding: 14px 12px;
-    text-align: left;
-    font-weight: 600;
-    border-bottom: 2px solid rgba(0, 212, 160, 0.2);
+.input::placeholder {
+    color: var(--color-text-muted);
 }
 
-table td {
-    padding: 12px;
-    border-bottom: 1px solid rgba(221, 221, 221, 0.5);
+.input:focus {
+    border-color: var(--color-primary);
+    box-shadow:
+        var(--glass-shadow),
+        0 0 0 3px rgba(0, 150, 199, 0.15);
 }
 
-table tbody tr {
-    transition: all 0.3s ease;
+.input:hover:not(:focus) {
+    background:
+        var(--glass-highlight) no-repeat,
+        var(--glass-bg-hover);
+    border-color: var(--glass-border-hover);
 }
 
-table tbody tr:hover {
-    background: rgba(0, 153, 204, 0.08);
-    backdrop-filter: blur(4px);
+.input-error {
+    border-color: var(--color-error);
 }
 
-/* ---- 11. 磨砂玻璃效果（Glassmorphism - 蓝绿渐变） ---- */
-/* 基础磨砂玻璃类 */
-.glassmorphism {
-    background: var(--white-07);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
-    border: 1px solid var(--border-accent);
-    border-radius: 12px;
+.input-error:focus {
+    box-shadow:
+        var(--glass-shadow),
+        0 0 0 3px rgba(239, 68, 68, 0.15);
 }
 
-/* 强磨砂玻璃 - 用于主要内容区域 */
-.glass-strong {
-    background: var(--white-08);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
-    border: 1px solid rgba(0, 153, 204, 0.2);
-    border-radius: 14px;
-    box-shadow: 0 8px 32px var(--shadow-primary),
-                inset 0 1px 1px rgba(255, 255, 255, 0.5);
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-xs);
 }
 
-/* 轻磨砂玻璃 - 用于悬停效果或次要元素 */
-.glass-light {
-    background: var(--white-05);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
-    border: 1px solid rgba(0, 212, 160, 0.15);
-    border-radius: 10px;
+.input-group label {
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary);
 }
 
-/* 深色磨砂玻璃 - 用于导航栏或暗色背景 */
-.glass-dark {
-    background: linear-gradient(135deg, rgba(0, 77, 122, 0.7), rgba(0, 139, 127, 0.7));
-    backdrop-filter: blur(15px);
-    -webkit-backdrop-filter: blur(15px);
-    border: 1px solid var(--border-accent);
-    border-radius: 12px;
-    box-shadow: 0 8px 32px var(--shadow-primary),
-                inset 0 1px 1px rgba(0, 212, 160, 0.1);
+.input-group .input-hint {
+    font-size: var(--font-size-xs);
+    color: var(--color-text-muted);
 }
 
-/* 彩色磨砂玻璃 - 用于突出显示 */
-.glass-gradient {
-    background: linear-gradient(135deg, rgba(0, 153, 204, 0.1), rgba(0, 212, 160, 0.1));
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--border-accent-strong);
-    border-radius: 12px;
-    box-shadow: 0 8px 32px var(--shadow-primary);
+.input-group .input-error-msg {
+    font-size: var(--font-size-xs);
+    color: var(--color-error);
 }
 
-/* ---- 12. 卡片样式（更新为磨砂玻璃） ---- */
+textarea.input {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* ========================================
+   11. SELECT
+   ======================================== */
+
+.select {
+    width: 100%;
+    padding: var(--spacing-sm) var(--spacing-md);
+    padding-right: var(--spacing-xl);
+    font-family: var(--font-family);
+    font-size: var(--font-size-sm);
+    color: var(--color-text);
+    background:
+        var(--glass-highlight) no-repeat,
+        var(--glass-bg);
+    backdrop-filter: blur(calc(var(--glass-blur) - 4px)) saturate(1.1);
+    -webkit-backdrop-filter: blur(calc(var(--glass-blur) - 4px)) saturate(1.1);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-sm);
+    box-shadow: var(--glass-shadow);
+    outline: none;
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M3 5l3 3 3-3' stroke='%235a6a7e' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right var(--spacing-md) center;
+    transition: all var(--transition-fast);
+}
+
+.select:focus {
+    border-color: var(--color-primary);
+    box-shadow:
+        var(--glass-shadow),
+        0 0 0 3px rgba(0, 150, 199, 0.15);
+}
+
+/* ========================================
+   12. CHECKBOX & RADIO
+   ======================================== */
+
+.checkbox,
+.radio {
+    display: inline-flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    cursor: pointer;
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    user-select: none;
+}
+
+.checkbox input,
+.radio input {
+    width: 18px;
+    height: 18px;
+    accent-color: var(--color-primary);
+    cursor: pointer;
+}
+
+/* ========================================
+   13. TAGS & BADGES
+   ======================================== */
+
+.tag {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px var(--spacing-sm);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-medium);
+    border-radius: var(--radius-full);
+    background: var(--color-primary-light);
+    color: var(--color-primary);
+}
+
+.tag-success {
+    background: rgba(16, 185, 129, 0.1);
+    color: var(--color-success);
+}
+
+.tag-warning {
+    background: rgba(245, 158, 11, 0.1);
+    color: var(--color-warning);
+}
+
+.tag-error {
+    background: rgba(239, 68, 68, 0.1);
+    color: var(--color-error);
+}
+
+.badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 20px;
+    height: 20px;
+    padding: 0 6px;
+    font-size: 11px;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text-on-primary);
+    background: var(--gradient-primary);
+    border-radius: var(--radius-full);
+}
+
+/* ========================================
+   14. CARDS
+   ======================================== */
+
 .card {
-    background: var(--white-075);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid var(--border-accent);
-    border-radius: 8px;
-    box-shadow: 0 4px 12px var(--shadow-primary),
-                0 8px 24px var(--shadow-primary-strong),
-                inset 0 1px 0 var(--white-07);
-    padding: 20px;
-    margin-bottom: 20px;
-    transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+    padding: var(--spacing-lg);
+    background:
+        var(--glass-highlight) no-repeat,
+        var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur)) saturate(1.2);
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.2);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--glass-shadow);
+    transition: all var(--transition-normal);
 }
 
 .card:hover {
-    background: var(--white-085);
-    border-color: var(--border-accent-strong);
-    box-shadow: 0 6px 20px var(--shadow-primary-strong),
-                0 12px 32px var(--shadow-primary-hover),
-                inset 0 1px 0 var(--white-08);
-    transform: translateY(-2px);
+    background:
+        var(--glass-highlight) no-repeat,
+        var(--glass-bg-hover);
+    border-color: var(--glass-border-hover);
+    box-shadow: var(--glass-shadow-hover);
 }
 
 .card-header {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.3));
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--border-accent);
-    margin: -20px -20px 15px -20px;
-    padding: 15px 20px;
-    border-radius: 8px 8px 0 0;
-    font-weight: 600;
+    margin-bottom: var(--spacing-md);
+}
+
+.card-title {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text);
 }
 
 .card-body {
-    padding: 15px 0;
+    color: var(--color-text-secondary);
 }
 
 .card-footer {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1));
-    border-top: 1px solid var(--border-accent);
-    margin: 15px -20px -20px -20px;
-    padding: 15px 20px;
-    border-radius: 0 0 8px 8px;
+    margin-top: var(--spacing-md);
+    padding-top: var(--spacing-md);
+    border-top: 1px solid var(--color-border-subtle);
 }
 
-/* ---- 响应式设计 ---- */
-@media (max-width: 768px) {
+/* ========================================
+   15. ALERTS
+   ======================================== */
+
+.alert {
+    padding: var(--spacing-md);
+    border-radius: var(--radius-md);
+    font-size: var(--font-size-sm);
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.alert-info {
+    background: rgba(59, 130, 246, 0.08);
+    color: var(--color-info);
+    border: 1px solid rgba(59, 130, 246, 0.15);
+}
+
+.alert-success {
+    background: rgba(16, 185, 129, 0.08);
+    color: var(--color-success);
+    border: 1px solid rgba(16, 185, 129, 0.15);
+}
+
+.alert-warning {
+    background: rgba(245, 158, 11, 0.08);
+    color: var(--color-warning);
+    border: 1px solid rgba(245, 158, 11, 0.15);
+}
+
+.alert-error {
+    background: rgba(239, 68, 68, 0.08);
+    color: var(--color-error);
+    border: 1px solid rgba(239, 68, 68, 0.15);
+}
+
+/* ========================================
+   16. TABLE
+   ======================================== */
+
+.table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    font-size: var(--font-size-sm);
+}
+
+.table th {
+    text-align: left;
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text-secondary);
+    font-size: var(--font-size-xs);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.table td {
+    padding: var(--spacing-sm) var(--spacing-md);
+    color: var(--color-text);
+    border-bottom: 1px solid var(--color-border-subtle);
+}
+
+.table tr:last-child td {
+    border-bottom: none;
+}
+
+.table tr:hover td {
+    background: var(--color-primary-light);
+}
+
+/* ========================================
+   17. MODAL
+   ======================================== */
+
+.modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 2000;
+}
+
+.modal {
+    width: 90%;
+    max-width: 480px;
+    padding: var(--spacing-xl);
+    background:
+        var(--glass-highlight) no-repeat,
+        var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur)) saturate(1.2);
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.2);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--glass-shadow), 0 24px 64px rgba(0, 0, 0, 0.12);
+}
+
+.modal-title {
+    font-size: var(--font-size-xl);
+    font-weight: var(--font-weight-semibold);
+    margin-bottom: var(--spacing-md);
+}
+
+.modal-body {
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-lg);
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: var(--spacing-sm);
+}
+
+/* ========================================
+   18. DIVIDER
+   ======================================== */
+
+.divider {
+    border: none;
+    height: 1px;
+    background: var(--color-border-subtle);
+    margin: var(--spacing-md) 0;
+}
+
+/* ========================================
+   19. AVATAR
+   ======================================== */
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-full);
+    background: var(--gradient-primary);
+    color: var(--color-text-on-primary);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: var(--font-weight-semibold);
+    font-size: var(--font-size-sm);
+    overflow: hidden;
+}
+
+.avatar img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.avatar-sm {
+    width: 28px;
+    height: 28px;
+    font-size: var(--font-size-xs);
+}
+
+.avatar-lg {
+    width: 56px;
+    height: 56px;
+    font-size: var(--font-size-lg);
+}
+
+/* ========================================
+   20. TABS
+   ======================================== */
+
+.tabs {
+    display: flex;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-xs);
+    background:
+        var(--glass-highlight) no-repeat,
+        var(--glass-bg);
+    backdrop-filter: blur(calc(var(--glass-blur) - 4px)) saturate(1.1);
+    -webkit-backdrop-filter: blur(calc(var(--glass-blur) - 4px)) saturate(1.1);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--glass-shadow);
+}
+
+.tab {
+    padding: var(--spacing-sm) var(--spacing-md);
+    font-size: var(--font-size-sm);
+    font-weight: var(--font-weight-medium);
+    color: var(--color-text-secondary);
+    border: none;
+    background: transparent;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    transition: all var(--transition-fast);
+}
+
+.tab:hover {
+    color: var(--color-primary);
+    background: var(--color-primary-light);
+}
+
+.tab.active {
+    color: var(--color-text-on-primary);
+    background: var(--gradient-primary);
+    box-shadow: 0 2px 8px rgba(0, 119, 182, 0.2);
+}
+
+/* ========================================
+   21. UTILITY CLASSES
+   ======================================== */
+
+.text-primary {
+    color: var(--color-primary);
+}
+
+.text-secondary {
+    color: var(--color-text-secondary);
+}
+
+.text-muted {
+    color: var(--color-text-muted);
+}
+
+.text-success {
+    color: var(--color-success);
+}
+
+.text-warning {
+    color: var(--color-warning);
+}
+
+.text-error {
+    color: var(--color-error);
+}
+
+.font-medium {
+    font-weight: var(--font-weight-medium);
+}
+
+.font-semibold {
+    font-weight: var(--font-weight-semibold);
+}
+
+.font-bold {
+    font-weight: var(--font-weight-bold);
+}
+
+.text-xs {
+    font-size: var(--font-size-xs);
+}
+
+.text-sm {
+    font-size: var(--font-size-sm);
+}
+
+.text-md {
+    font-size: var(--font-size-md);
+}
+
+.text-lg {
+    font-size: var(--font-size-lg);
+}
+
+.text-xl {
+    font-size: var(--font-size-xl);
+}
+
+.flex {
+    display: flex;
+}
+
+.flex-col {
+    flex-direction: column;
+}
+
+.items-center {
+    align-items: center;
+}
+
+.justify-center {
+    justify-content: center;
+}
+
+.justify-between {
+    justify-content: space-between;
+}
+
+.gap-xs {
+    gap: var(--spacing-xs);
+}
+
+.gap-sm {
+    gap: var(--spacing-sm);
+}
+
+.gap-md {
+    gap: var(--spacing-md);
+}
+
+.gap-lg {
+    gap: var(--spacing-lg);
+}
+
+.w-full {
+    width: 100%;
+}
+
+.h-full {
+    height: 100%;
+}
+
+.mt-sm {
+    margin-top: var(--spacing-sm);
+}
+
+.mt-md {
+    margin-top: var(--spacing-md);
+}
+
+.mt-lg {
+    margin-top: var(--spacing-lg);
+}
+
+.mb-sm {
+    margin-bottom: var(--spacing-sm);
+}
+
+.mb-md {
+    margin-bottom: var(--spacing-md);
+}
+
+.mb-lg {
+    margin-bottom: var(--spacing-lg);
+}
+
+.p-sm {
+    padding: var(--spacing-sm);
+}
+
+.p-md {
+    padding: var(--spacing-md);
+}
+
+.p-lg {
+    padding: var(--spacing-lg);
+}
+
+.rounded-sm {
+    border-radius: var(--radius-sm);
+}
+
+.rounded-md {
+    border-radius: var(--radius-md);
+}
+
+.rounded-lg {
+    border-radius: var(--radius-lg);
+}
+
+.rounded-xl {
+    border-radius: var(--radius-xl);
+}
+
+.rounded-full {
+    border-radius: var(--radius-full);
+}
+
+.gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.truncate {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+/* ========================================
+   22. SECTION COMMON
+   ======================================== */
+
+.features,
+.roles {
+    position: relative;
+    z-index: 1;
+    padding: var(--spacing-xl) 0;
+}
+
+.section-header {
+    text-align: center;
+    margin-bottom: var(--spacing-xl);
+}
+
+.section-tag {
+    display: inline-block;
+    padding: var(--spacing-xs) var(--spacing-md);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-primary);
+    background: var(--color-primary-light);
+    border: 1px solid var(--color-primary-medium);
+    border-radius: var(--radius-full);
+    margin-bottom: var(--spacing-sm);
+    letter-spacing: 0.03em;
+}
+
+.section-header h2 {
+    font-size: var(--font-size-2xl);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text);
+}
+
+/* ========================================
+   23. FEATURES GRID
+   ======================================== */
+
+.features-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: var(--spacing-md);
+}
+
+.glass-card {
+    padding: var(--spacing-lg);
+    text-align: center;
+    background:
+        var(--glass-highlight) no-repeat,
+        var(--glass-bg);
+    backdrop-filter: blur(calc(var(--glass-blur) - 4px)) saturate(1.1);
+    -webkit-backdrop-filter: blur(calc(var(--glass-blur) - 4px)) saturate(1.1);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--glass-shadow);
+    transition: all var(--transition-normal);
+}
+
+.glass-card:hover {
+    background:
+        var(--glass-highlight) no-repeat,
+        var(--glass-bg-hover);
+    border-color: var(--glass-border-hover);
+    box-shadow: var(--glass-shadow-hover);
+    transform: translateY(-2px);
+}
+
+.card-icon {
+    width: 48px;
+    height: 48px;
+    margin: 0 auto var(--spacing-md);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--gradient-primary);
+    border-radius: var(--radius-md);
+    box-shadow: 0 4px 12px rgba(0, 119, 182, 0.2);
+}
+
+.card-icon svg {
+    width: 24px;
+    height: 24px;
+    fill: none;
+    stroke: var(--color-text-on-primary);
+    stroke-width: 1.8;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+.glass-card h3 {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text);
+    margin-bottom: var(--spacing-sm);
+}
+
+.glass-card p {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+}
+
+/* ========================================
+   24. ROLES GRID
+   ======================================== */
+
+.roles-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-md);
+}
+
+.role-entry {
+    text-align: center;
+    padding: var(--spacing-xl) var(--spacing-lg);
+}
+
+.role-icon {
+    font-size: 40px;
+    margin-bottom: var(--spacing-md);
+    line-height: 1;
+}
+
+.role-entry h3 {
+    font-size: var(--font-size-lg);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-text);
+    margin-bottom: var(--spacing-sm);
+}
+
+.role-entry p {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-secondary);
+    line-height: 1.5;
+}
+
+/* ========================================
+   25. GLASS VARIANTS
+   ======================================== */
+
+.glass-2 {
+    background:
+        var(--glass-highlight) no-repeat,
+        var(--glass-bg);
+    backdrop-filter: blur(calc(var(--glass-blur) - 4px)) saturate(1.1);
+    -webkit-backdrop-filter: blur(calc(var(--glass-blur) - 4px)) saturate(1.1);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--glass-shadow);
+    transition: all var(--transition-normal);
+}
+
+.glass-2:hover {
+    background:
+        var(--glass-highlight) no-repeat,
+        var(--glass-bg-hover);
+    border-color: var(--glass-border-hover);
+    box-shadow: var(--glass-shadow-hover);
+    transform: translateY(-2px);
+}
+
+.glass-3 {
+    background:
+        var(--glass-highlight) no-repeat,
+        var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur)) saturate(1.2);
+    -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(1.2);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-xl);
+    box-shadow: var(--glass-shadow);
+    transition: all var(--transition-normal);
+}
+
+.glass-3:hover {
+    background:
+        var(--glass-highlight) no-repeat,
+        var(--glass-bg-hover);
+    border-color: var(--glass-border-hover);
+    box-shadow: var(--glass-shadow-hover);
+}
+
+/* ========================================
+   26. GLASS BUTTONS
+   ======================================== */
+
+.btn-glass {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-sm) var(--spacing-lg);
+    font-family: var(--font-family);
+    font-size: var(--font-size-md);
+    font-weight: var(--font-weight-medium);
+    line-height: 1.4;
+    color: var(--color-text);
+    text-decoration: none;
+    background:
+        var(--glass-highlight) no-repeat,
+        var(--glass-bg);
+    backdrop-filter: blur(calc(var(--glass-blur) - 4px)) saturate(1.1);
+    -webkit-backdrop-filter: blur(calc(var(--glass-blur) - 4px)) saturate(1.1);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    box-shadow: var(--glass-shadow);
+    cursor: pointer;
+    transition: all var(--transition-normal);
+}
+
+.btn-glass:hover {
+    background:
+        var(--glass-highlight) no-repeat,
+        var(--glass-bg-hover);
+    border-color: var(--glass-border-hover);
+    box-shadow: var(--glass-shadow-hover);
+    transform: translateY(-1px);
+}
+
+.btn-glass:active {
+    transform: translateY(0);
+}
+
+.btn-glass-primary {
+    background: var(--gradient-primary);
+    color: var(--color-text-on-primary);
+    border: none;
+    box-shadow: 0 4px 16px rgba(0, 119, 182, 0.25);
+}
+
+.btn-glass-primary:hover {
+    background: var(--gradient-primary-hover);
+    box-shadow: 0 6px 24px rgba(0, 119, 182, 0.35);
+    transform: translateY(-2px);
+}
+
+.btn-glass-primary:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 8px rgba(0, 119, 182, 0.2);
+}
+
+/* ========================================
+   27. CONTAINER
+   ======================================== */
+
+.container {
+    width: 100%;
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-lg);
+}
+
+/* ========================================
+   28. RESPONSIVE — FEATURES & ROLES
+   ======================================== */
+
+@media (max-width: 900px) {
+    .features-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .roles-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 600px) {
     nav ul {
-        gap: 15px;
+        gap: 0;
     }
 
-    .btn {
-        padding: 8px 16px;
-        font-size: 13px;
-        border-radius: 6px;
+    nav ul li a {
+        padding: var(--spacing-xs) var(--spacing-sm);
+        font-size: var(--font-size-xs);
     }
 
-    h1 {
-        font-size: 24px;
-    }
-
-    h2 {
-        font-size: 20px;
-    }
-
-    /* 在移动设备上减弱模糊效果以提高性能 */
-    .glassmorphism,
-    .glass-strong,
-    .glass-light,
-    .glass-dark,
-    .glass-gradient,
-    .card,
-    nav,
-    input[type="text"],
-    input[type="email"],
-    input[type="password"],
-    input[type="number"],
-    input[type="date"],
-    select,
-    textarea,
-    table {
-        backdrop-filter: blur(5px);
-        -webkit-backdrop-filter: blur(5px);
-    }
-
-    .card {
-        padding: 15px;
+    .features-grid,
+    .roles-grid {
+        grid-template-columns: 1fr;
     }
 }

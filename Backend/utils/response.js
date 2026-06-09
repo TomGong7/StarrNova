@@ -1,6 +1,6 @@
 // ========================================
-// 统一的 API 响应助手
-// 减少控制器中的重复代码
+// Unified API Response Helpers
+// Reduces repetitive code in controllers
 // ========================================
 
 const sendSuccess = (res, data, message = 'Success', statusCode = 200) => {
@@ -29,8 +29,8 @@ const handleAsyncError = (fn) => {
         try {
             await fn(req, res, next);
         } catch (err) {
-            console.error(`${fn.name} 错误:`, err);
-            sendError(res, '操作失败', 500, err);
+            console.error(`Error in ${fn.name}:`, err);
+            sendError(res, 'Operation failed', 500, err);
         }
     };
 };

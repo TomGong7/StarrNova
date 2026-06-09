@@ -1,163 +1,203 @@
 /* ========================================
-   StarrNova 欢迎页 | 精细磨砂玻璃系统
+   StarrNova.css — Welcome Page Styles
+   Specific to StarrNova.html
    ======================================== */
 
-/* ---- 页面基础 & 玻璃变量 ---- */
+/* ========================================
+   1. PAGE LAYOUT
+   ======================================== */
+
 .welcome-page {
-    --g-subtle: rgba(255,255,255,0.04);
-    --g-std:   rgba(255,255,255,0.08);
-    --g-strong:rgba(255,255,255,0.14);
-    --g-border:   rgba(255,255,255,0.08);
-    --g-border-s: rgba(255,255,255,0.14);
-    --accent:  #5b8def;
-    --accent-dim: rgba(91,141,239,0.12);
-    --text-dim: #8892a4;
-    background: #0c0f17;
-    color: #e4e8f0;
+    min-height: 100vh;
+    background:
+        radial-gradient(ellipse 80% 60% at 20% 10%, rgba(0, 180, 216, 0.12) 0%, transparent 60%),
+        radial-gradient(ellipse 70% 50% at 80% 80%, rgba(0, 119, 182, 0.10) 0%, transparent 60%),
+        var(--color-bg);
+    overflow-x: hidden;
 }
 
-/* ---- 三层玻璃系统 ---- */
-.glass-1, .glass-2, .glass-3 {
-    backdrop-filter: blur(12px) saturate(1.4);
-    -webkit-backdrop-filter: blur(12px) saturate(1.4);
-    border: 1px solid var(--g-border);
-    border-radius: 16px;
-}
-.glass-1 { background: var(--g-subtle); }
-.glass-2 {
-    background: var(--g-std);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.25), 0 4px 24px rgba(0,0,0,0.2);
-    border-color: var(--g-border-s);
-}
-.glass-3 {
-    background: var(--g-strong);
-    backdrop-filter: blur(24px) saturate(1.6);
-    -webkit-backdrop-filter: blur(24px) saturate(1.6);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), 0 8px 40px rgba(0,0,0,0.3);
-    border-color: var(--g-border-s);
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
-/* ---- 装饰背景光斑 ---- */
+/* ========================================
+   2. DECORATIVE BACKGROUND ORBS
+   ======================================== */
+
 .bg-orb {
-    position: fixed; border-radius: 50%;
-    filter: blur(100px); opacity: 0.12; pointer-events: none; z-index: 0;
-}
-.bg-orb-1 { width: 500px; height: 500px; background: #5b8def; top: -12%; left: -8%; }
-.bg-orb-2 { width: 400px; height: 400px; background: #7c5ce7; bottom: -10%; right: -6%; }
-.bg-orb-3 { width: 280px; height: 280px; background: #3dd9b0; top: 55%; left: 50%;
-             transform: translate(-50%,-50%); }
-
-/* ---- 导航/页脚深色覆盖 ---- */
-.welcome-page nav,
-.welcome-page footer {
-    background: rgba(12,15,23,0.75);
-    backdrop-filter: blur(20px) saturate(1.8);
-    -webkit-backdrop-filter: blur(20px) saturate(1.8);
-    border-color: rgba(255,255,255,0.06);
+    position: fixed;
+    border-radius: 50%;
+    pointer-events: none;
+    z-index: 0;
+    filter: blur(80px);
+    opacity: 0.5;
 }
 
-/* ---- 英雄区 ---- */
+.bg-orb-1 {
+    width: 500px;
+    height: 500px;
+    top: -120px;
+    left: -100px;
+    background: radial-gradient(circle, rgba(0, 180, 216, 0.3), transparent 70%);
+    animation: orb-float-1 20s ease-in-out infinite;
+}
+
+.bg-orb-2 {
+    width: 400px;
+    height: 400px;
+    bottom: -80px;
+    right: -60px;
+    background: radial-gradient(circle, rgba(0, 119, 182, 0.25), transparent 70%);
+    animation: orb-float-2 25s ease-in-out infinite;
+}
+
+.bg-orb-3 {
+    width: 300px;
+    height: 300px;
+    top: 40%;
+    left: 55%;
+    background: radial-gradient(circle, rgba(0, 150, 199, 0.2), transparent 70%);
+    animation: orb-float-3 18s ease-in-out infinite;
+}
+
+@keyframes orb-float-1 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(40px, 30px) scale(1.05); }
+    66% { transform: translate(-20px, 50px) scale(0.95); }
+}
+
+@keyframes orb-float-2 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    33% { transform: translate(-30px, -40px) scale(1.08); }
+    66% { transform: translate(20px, -20px) scale(0.96); }
+}
+
+@keyframes orb-float-3 {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(30px, -30px) scale(1.1); }
+}
+
+/* ========================================
+   4. HERO SECTION
+   ======================================== */
+
 .hero {
-    position: relative; z-index: 1;
-    padding: 120px 20px 80px; text-align: center;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 85vh;
+    padding-top: var(--spacing-xl);
+    padding-bottom: var(--spacing-xl);
 }
-.hero-card { max-width: 620px; margin: 0 auto; padding: 52px 44px; }
+
+.hero-card {
+    text-align: center;
+    padding: var(--spacing-xl) var(--spacing-xl) calc(var(--spacing-xl) + var(--spacing-md));
+    max-width: 640px;
+    margin: 0 auto;
+}
+
 .hero-badge {
-    display: inline-block; font-size: 13px; letter-spacing: .5px;
-    color: var(--accent); background: var(--accent-dim);
-    border: 1px solid rgba(91,141,239,0.2); border-radius: 100px;
-    padding: 6px 18px; margin-bottom: 24px;
+    display: inline-block;
+    padding: var(--spacing-xs) var(--spacing-md);
+    font-size: var(--font-size-xs);
+    font-weight: var(--font-weight-semibold);
+    color: var(--color-primary);
+    background: var(--color-primary-light);
+    border: 1px solid var(--color-primary-medium);
+    border-radius: var(--radius-full);
+    margin-bottom: var(--spacing-md);
+    letter-spacing: 0.03em;
 }
-.hero h1 {
-    font-size: 52px; font-weight: 700; line-height: 1.15;
-    color: #fff; margin-bottom: 16px; letter-spacing: -.5px;
+
+.hero-card h1 {
+    font-size: clamp(var(--font-size-2xl), 5vw, 42px);
+    font-weight: var(--font-weight-bold);
+    line-height: 1.2;
+    color: var(--color-text);
+    margin-bottom: var(--spacing-md);
 }
-.text-accent {
-    background: linear-gradient(135deg, #5b8def, #7c5ce7);
-    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+
+.hero-card h1 .text-accent {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
     background-clip: text;
 }
-.hero-desc { font-size: 17px; color: var(--text-dim); margin-bottom: 36px; }
-.hero-actions { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
 
-/* ---- 玻璃按钮 ---- */
-.btn-glass {
-    display: inline-flex; align-items: center; gap: 8px;
-    padding: 13px 28px; border-radius: 100px; font-size: 15px;
-    font-weight: 600; text-decoration: none; cursor: pointer;
-    transition: all .25s ease;
-    border: 1px solid var(--g-border-s);
-    background: var(--g-std);
-    backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
-    color: #e4e8f0;
-}
-.btn-glass:hover {
-    background: var(--g-strong); transform: translateY(-1px);
-    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
-}
-.btn-glass-primary {
-    background: linear-gradient(135deg, #5b8def, #7c5ce7);
-    border-color: transparent; color: #fff;
-    box-shadow: 0 4px 20px rgba(91,141,239,0.3);
-}
-.btn-glass-primary:hover {
-    box-shadow: 0 6px 28px rgba(91,141,239,0.45); transform: translateY(-2px);
+.hero-desc {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-lg);
+    line-height: 1.6;
 }
 
-/* ---- 区块标题 ---- */
-.section-header { text-align: center; margin-bottom: 56px; }
-.section-tag {
-    display: inline-block; font-size: 12px; font-weight: 600;
-    letter-spacing: 1.5px; text-transform: uppercase;
-    color: var(--accent); margin-bottom: 12px;
-}
-.section-header h2 { font-size: 34px; font-weight: 700; color: #fff; letter-spacing: -.3px; }
-
-/* ---- 功能介绍 ---- */
-.features { position: relative; z-index: 1; padding: 60px 20px 80px; }
-.features-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 20px; max-width: 1100px; margin: 0 auto;
+.hero-actions {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--spacing-md);
+    flex-wrap: wrap;
 }
 
-/* ---- 通用玻璃卡片 ---- */
-.glass-card { padding: 36px 28px; transition: all .3s ease; }
-.glass-card:hover {
-    transform: translateY(-4px);
-    background: var(--g-strong); border-color: var(--g-border-s);
-    box-shadow: inset 0 1px 0 rgba(255,255,255,0.3), 0 12px 36px rgba(0,0,0,0.25);
-}
-.card-icon {
-    width: 48px; height: 48px; border-radius: 12px;
-    background: var(--accent-dim);
-    display: flex; align-items: center; justify-content: center;
-    margin-bottom: 20px; color: var(--accent);
-}
-.card-icon svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 1.5; }
-.glass-card h3 { font-size: 18px; font-weight: 600; color: #fff; margin-bottom: 8px; }
-.glass-card p { font-size: 14px; color: var(--text-dim); line-height: 1.6; margin: 0; }
+/* ========================================
+   5. FOOTER
+   ======================================== */
 
-/* ---- 用户角色 ---- */
-.roles { position: relative; z-index: 1; padding: 0 20px 80px; }
-.roles-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px; max-width: 900px; margin: 0 auto;
+.welcome-page footer {
+    position: relative;
+    z-index: 1;
+    margin-top: auto;
+    padding: var(--spacing-lg) 0;
+    text-align: center;
 }
-.role-icon { font-size: 32px; margin-bottom: 16px; }
 
-/* ---- 响应式 ---- */
-@media (max-width: 768px) {
-    .hero { padding: 80px 16px 60px; }
-    .hero-card { padding: 36px 24px; }
-    .hero h1 { font-size: 34px; }
-    .hero-desc { font-size: 15px; }
-    .section-header h2 { font-size: 26px; }
-    .features, .roles { padding: 40px 16px 60px; }
-    .features-grid, .roles-grid { grid-template-columns: 1fr; }
-    .glass-card { padding: 28px 22px; }
-    .bg-orb-1 { width: 300px; height: 300px; }
-    .bg-orb-2 { width: 250px; height: 250px; }
-    .bg-orb-3 { width: 200px; height: 200px; }
+.welcome-page footer .container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: var(--spacing-xs);
+    padding: var(--spacing-md) var(--spacing-lg);
+    background:
+        var(--glass-highlight) no-repeat,
+        var(--glass-bg);
+    backdrop-filter: blur(calc(var(--glass-blur) - 4px)) saturate(1.1);
+    -webkit-backdrop-filter: blur(calc(var(--glass-blur) - 4px)) saturate(1.1);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--glass-shadow);
+}
+
+.welcome-page footer p {
+    font-size: var(--font-size-sm);
+    color: var(--color-text-muted);
+}
+
+/* ========================================
+   6. RESPONSIVE
+   ======================================== */
+
+@media (max-width: 600px) {
+    .hero {
+        min-height: 75vh;
+        padding-top: var(--spacing-xl);
+    }
+
+    .hero-card {
+        padding: var(--spacing-lg);
+    }
+
+    .hero-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .btn-glass,
+    .btn-glass-primary {
+        width: 100%;
+    }
 }
