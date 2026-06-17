@@ -80,72 +80,352 @@
 }
 
 /* ========================================
-   4. HERO SECTION
+   3. WELCOME MAIN — SPLIT LAYOUT
    ======================================== */
 
-.hero {
+.welcome-main {
     position: relative;
     z-index: 1;
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
-    min-height: 85vh;
-    padding-top: var(--spacing-xl);
-    padding-bottom: var(--spacing-xl);
+    padding: var(--spacing-xl) var(--spacing-lg);
 }
 
-.hero-card {
-    text-align: center;
-    padding: var(--spacing-xl) var(--spacing-xl) calc(var(--spacing-xl) + var(--spacing-md));
-    max-width: 640px;
-    margin: 0 auto;
+.welcome-container {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-xl);
+    max-width: 1080px;
+    width: 100%;
 }
 
-.hero-badge {
-    display: inline-block;
-    padding: var(--spacing-xs) var(--spacing-md);
-    font-size: var(--font-size-xs);
-    font-weight: var(--font-weight-semibold);
-    color: var(--color-primary);
-    background: var(--color-primary-light);
-    border: 1px solid var(--color-primary-medium);
-    border-radius: var(--radius-full);
-    margin-bottom: var(--spacing-md);
-    letter-spacing: 0.03em;
+/* ========================================
+   4. BRAND SECTION (LEFT)
+   ======================================== */
+
+.welcome-brand {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: var(--spacing-xl) var(--spacing-lg);
 }
 
-.hero-card h1 {
-    font-size: clamp(var(--font-size-2xl), 5vw, 42px);
+.welcome-brand .brand-name {
+    font-size: clamp(36px, 6vw, 64px);
     font-weight: var(--font-weight-bold);
-    line-height: 1.2;
-    color: var(--color-text);
+    line-height: 1.1;
+    letter-spacing: -0.02em;
     margin-bottom: var(--spacing-md);
-}
-
-.hero-card h1 .text-accent {
     background: var(--gradient-primary);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
 }
 
-.hero-desc {
-    font-size: var(--font-size-lg);
-    color: var(--color-text-secondary);
-    margin-bottom: var(--spacing-lg);
-    line-height: 1.6;
+.welcome-brand h1 {
+    font-size: clamp(var(--font-size-2xl), 5vw, 48px);
+    font-weight: var(--font-weight-bold);
+    line-height: 1.2;
+    color: var(--color-text);
+    margin-bottom: var(--spacing-md);
 }
 
-.hero-actions {
+.welcome-brand h1 .text-accent {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.brand-desc {
+    font-size: var(--font-size-lg);
+    color: var(--color-text-secondary);
+    margin-bottom: var(--spacing-xl);
+    line-height: 1.7;
+}
+
+.brand-features {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+}
+
+.brand-feature-item {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+    font-size: var(--font-size-md);
+    color: var(--color-text-secondary);
+}
+
+.brand-feature-icon {
+    font-size: 20px;
+    width: 36px;
+    height: 36px;
     display: flex;
     align-items: center;
     justify-content: center;
-    gap: var(--spacing-md);
-    flex-wrap: wrap;
+    background: var(--color-primary-light);
+    border-radius: var(--radius-sm);
 }
 
 /* ========================================
-   5. FOOTER
+   5. LOGIN SECTION (RIGHT)
+   ======================================== */
+
+.welcome-login {
+    width: 420px;
+    padding: var(--spacing-xl);
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-radius: var(--radius-xl);
+    font-size: 14px;
+}
+
+.welcome-login .tabs {
+    border-radius: var(--radius-lg);
+    background: rgba(255, 255, 255, 0.2);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    box-shadow: none;
+    gap: var(--spacing-sm);
+    padding: var(--spacing-sm);
+}
+
+.welcome-login .tab {
+    border-radius: var(--radius-md);
+    height: 46px;
+}
+
+.welcome-login .input {
+    border-radius: var(--radius-md);
+    height: 46px;
+    padding: 0 var(--spacing-md);
+    line-height: 46px;
+    font-size: 14px;
+    background: rgba(255, 255, 255, 0.3);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.welcome-login .input:focus {
+    border-color: var(--color-primary);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.4),
+        inset 0 0 8px rgba(0, 150, 199, 0.08),
+        0 0 12px 2px rgba(0, 150, 199, 0.18);
+}
+
+.welcome-login .input:hover:not(:focus) {
+    background: rgba(255, 255, 255, 0.4);
+    border-color: rgba(255, 255, 255, 0.45);
+}
+
+.welcome-login .btn {
+    border-radius: var(--radius-md);
+    height: 46px;
+    padding: 0 var(--spacing-md);
+    line-height: 46px;
+}
+
+.login-title {
+    text-align: center;
+    font-size: 26px;
+    font-weight: var(--font-weight-bold);
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    margin-bottom: var(--spacing-md);
+}
+
+.welcome-login .btn-secondary {
+    background: rgba(255, 255, 255, 0.25);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.welcome-login .btn-secondary:hover {
+    background: rgba(255, 255, 255, 0.4);
+    border-color: rgba(255, 255, 255, 0.45);
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.5);
+}
+
+.welcome-login .input-group label {
+    font-size: 14px;
+}
+
+.welcome-login .checkbox {
+    font-size: 14px;
+}
+
+.welcome-login .login-message {
+    border-radius: var(--radius-md);
+    font-size: 14px;
+}
+
+.login-tabs {
+    width: 100%;
+    margin-bottom: var(--spacing-lg);
+}
+
+.login-tabs .tab {
+    flex: 1;
+    text-align: center;
+    padding: 0 var(--spacing-sm);
+    font-size: 14px;
+    white-space: nowrap;
+    line-height: 46px;
+}
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    position: relative;
+}
+
+.tab-panels-wrapper {
+    position: relative;
+}
+
+.tab-panel {
+    display: flex;
+    flex-direction: column;
+    gap: var(--spacing-md);
+    opacity: 0;
+    transform: translateY(8px);
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    transition: opacity var(--transition-normal), transform var(--transition-normal);
+}
+
+.tab-panel.active {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    position: relative;
+}
+
+.sms-code-row {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.sms-code-row .input {
+    flex: 1;
+}
+
+.btn-sms-send {
+    white-space: nowrap;
+    flex-shrink: 0;
+    font-size: 14px;
+}
+
+.btn-send-code:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+/* ========================================
+   6. LOGIN OPTIONS ROW
+   ======================================== */
+
+.login-options {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.btn-forgot {
+    background: none;
+    border: none;
+    padding: 0;
+    font-family: var(--font-family);
+    font-size: 14px;
+    color: var(--color-primary);
+    cursor: pointer;
+    transition: color var(--transition-fast);
+}
+
+.btn-forgot:hover {
+    color: var(--color-primary-dark);
+    text-decoration: underline;
+}
+
+/* ========================================
+   7. LOGIN ACTIONS
+   ======================================== */
+
+.login-actions {
+    display: flex;
+    gap: var(--spacing-sm);
+}
+
+.login-actions .btn {
+    flex: 1;
+    justify-content: center;
+}
+
+.btn-login {
+    font-size: 15px;
+    font-weight: var(--font-weight-semibold);
+}
+
+.btn-register {
+    font-size: 15px;
+    font-weight: var(--font-weight-medium);
+    text-align: center;
+    text-decoration: none;
+}
+
+/* ========================================
+   8. LOGIN MESSAGE
+   ======================================== */
+
+.login-message {
+    font-size: var(--font-size-sm);
+    text-align: center;
+    display: none;
+    transition: all var(--transition-normal);
+}
+
+.login-message.error,
+.login-message.success {
+    display: block;
+    margin-top: var(--spacing-md);
+}
+
+.login-message.error {
+    color: var(--color-error);
+    padding: var(--spacing-sm);
+    background: rgba(239, 68, 68, 0.08);
+    border: 1px solid rgba(239, 68, 68, 0.15);
+    border-radius: var(--radius-sm);
+}
+
+.login-message.success {
+    color: var(--color-success);
+    padding: var(--spacing-sm);
+    background: rgba(16, 185, 129, 0.08);
+    border: 1px solid rgba(16, 185, 129, 0.15);
+    border-radius: var(--radius-sm);
+}
+
+/* ========================================
+   9. FOOTER
    ======================================== */
 
 .welcome-page footer {
@@ -161,15 +441,13 @@
     flex-direction: column;
     align-items: center;
     gap: var(--spacing-xs);
-    padding: var(--spacing-md) var(--spacing-lg);
-    background:
-        var(--glass-highlight) no-repeat,
-        var(--glass-bg);
-    backdrop-filter: blur(calc(var(--glass-blur) - 4px)) saturate(1.1);
-    -webkit-backdrop-filter: blur(calc(var(--glass-blur) - 4px)) saturate(1.1);
-    border: 1px solid var(--glass-border);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--glass-shadow);
+    padding: 0;
+    background: none;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: none;
+    border-radius: 0;
+    box-shadow: none;
 }
 
 .welcome-page footer p {
@@ -178,26 +456,50 @@
 }
 
 /* ========================================
-   6. RESPONSIVE
+   10. RESPONSIVE
    ======================================== */
 
-@media (max-width: 600px) {
-    .hero {
-        min-height: 75vh;
-        padding-top: var(--spacing-xl);
-    }
-
-    .hero-card {
-        padding: var(--spacing-lg);
-    }
-
-    .hero-actions {
+@media (max-width: 768px) {
+    .welcome-container {
         flex-direction: column;
-        width: 100%;
+        align-items: center;
     }
 
-    .btn-glass,
-    .btn-glass-primary {
+    .welcome-brand {
+        text-align: center;
+        align-items: center;
+        padding: var(--spacing-lg) 0;
+    }
+
+    .welcome-brand .brand-name {
+        align-self: center;
+    }
+
+    .brand-features {
+        align-items: center;
+    }
+
+    .welcome-login {
         width: 100%;
+        max-width: 420px;
+    }
+}
+
+@media (max-width: 480px) {
+    .welcome-main {
+        padding: var(--spacing-md) var(--spacing-sm);
+    }
+
+    .welcome-login {
+        padding: var(--spacing-lg) var(--spacing-md);
+    }
+
+    .login-actions {
+        flex-direction: column;
+    }
+
+    .login-tabs .tab {
+        font-size: 11px;
+        padding: var(--spacing-xs);
     }
 }

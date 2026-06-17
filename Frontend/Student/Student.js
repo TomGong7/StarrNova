@@ -30,7 +30,7 @@ function initStudentDashboard() {
 // 加载学生信息
 function loadStudentInfo() {
     // 这里可以添加从后端API获取学生信息的逻辑
-    const studentName = getLocalStorage('userName') || '学生用户';
+    const studentName = getLocalStorage('starrnovaId') || '学生用户';
     console.log('加载学生信息:', studentName);
 }
 

@@ -65,7 +65,7 @@ function logout() {
     if (confirmAction('确定要退出登录吗？')) {
         removeLocalStorage('userId');
         removeLocalStorage('userType');
-        removeLocalStorage('userName');
+        removeLocalStorage('starrnovaId');
         window.location.href = './StarrNova.html';
     }
 }

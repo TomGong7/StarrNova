@@ -10,26 +10,26 @@ const { sendSuccess, sendError } = require('../utils/response');
 // User registration
 async function register(req, res) {
     try {
-        const { username, email, password, fullName, userType, studentId } = req.body;
+        const { starrnovaId, email, password, fullName, userType, studentId } = req.body;
 
         // Input validation
-        if (!username || !email || !password || !fullName || !userType) {
+        if (!starrnovaId || !email || !password || !fullName || !userType) {
             return sendError(res, 'Missing required fields', 400);
         }
 
-        // Check if username/email already exists
+        // Check if starrnovaId/email already exists
         const [existingUser, existingEmail] = await Promise.all([
-            User.findByUsername(username),
+            User.findByStarrnovaId(starrnovaId),
             User.findByEmail(email)
         ]);
 
-        if (existingUser) return sendError(res, 'Username already exists', 409);
+        if (existingUser) return sendError(res, 'StarrNova ID already exists', 409);
         if (existingEmail) return sendError(res, 'Email already registered', 409);
 
         // Hash password and create user
         const hashedPassword = await hashPassword(password);
         const userId = await User.create({
-            username, email, password: hashedPassword, fullName, userType, studentId
+            starrnovaId, email, password: hashedPassword, fullName, userType, studentId
         });
 
         sendSuccess(res, { userId }, 'Registration successful', 201);
@@ -42,19 +42,19 @@ async function register(req, res) {
 // User login
 async function login(req, res) {
     try {
-        const { username, password } = req.body;
+        const { starrnovaId, password } = req.body;
 
         // Input validation
-        if (!username || !password) {
-            return sendError(res, 'Username and password are required', 400);
+        if (!starrnovaId || !password) {
+            return sendError(res, 'StarrNova ID and password are required', 400);
         }
 
         // Find user and verify password
-        const user = await User.findByUsername(username);
-        if (!user) return sendError(res, 'Invalid username or password', 401);
+        const user = await User.findByStarrnovaId(starrnovaId);
+        if (!user) return sendError(res, 'Invalid StarrNova ID or password', 401);
 
         const isPasswordValid = await comparePassword(password, user.password);
-        if (!isPasswordValid) return sendError(res, 'Invalid username or password', 401);
+        if (!isPasswordValid) return sendError(res, 'Invalid StarrNova ID or password', 401);
 
         // Generate token
         const token = generateToken(user.id, user.user_type);
@@ -62,7 +62,7 @@ async function login(req, res) {
             token,
             user: {
                 id: user.id,
-                username: user.username,
+                starrnovaId: user.starrnova_id,
                 email: user.email,
                 fullName: user.full_name,
                 userType: user.user_type

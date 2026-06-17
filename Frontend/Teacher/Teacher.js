@@ -30,7 +30,7 @@ function initTeacherDashboard() {
 // 加载教师信息
 function loadTeacherInfo() {
     // 这里可以添加从后端API获取教师信息的逻辑
-    const teacherName = getLocalStorage('userName') || '教师用户';
+    const teacherName = getLocalStorage('starrnovaId') || '教师用户';
     console.log('加载教师信息:', teacherName);
 }
 

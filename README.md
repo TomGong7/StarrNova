@@ -284,7 +284,7 @@ POST /api/users/register
 
 请求体:
 {
-    "username": "用户名",
+    "starrnovaId": "StarrNova ID",
     "email": "邮箱地址",
     "password": "密码",
     "fullName": "真实姓名",
@@ -306,7 +306,7 @@ POST /api/users/login
 
 请求体:
 {
-    "username": "用户名",
+    "starrnovaId": "StarrNova ID",
     "password": "密码"
 }
 
@@ -317,7 +317,7 @@ POST /api/users/login
     "token": "JWT_TOKEN",
     "user": {
         "id": 1,
-        "username": "用户名",
+        "starrnovaId": "StarrNova ID",
         "email": "邮箱",
         "fullName": "真实姓名",
         "userType": "student"
@@ -335,7 +335,7 @@ Headers: Authorization: Bearer JWT_TOKEN
     "success": true,
     "user": {
         "id": 1,
-        "username": "用户名",
+        "starrnovaId": "StarrNova ID",
         "email": "邮箱",
         "full_name": "真实姓名",
         "user_type": "student",
@@ -382,7 +382,7 @@ Headers: Authorization: Bearer JWT_TOKEN
 ```sql
 CREATE TABLE users (
     id INT AUTO_INCREMENT PRIMARY KEY,
-    username VARCHAR(50) UNIQUE NOT NULL,
+    starrnova_id VARCHAR(50) UNIQUE NOT NULL,
     email VARCHAR(100) UNIQUE NOT NULL,
     password VARCHAR(255) NOT NULL,
     full_name VARCHAR(100),
@@ -501,7 +501,7 @@ API 使用 JWT (JSON Web Token) 进行认证：
 项目使用 `localStorage` 存储用户信息：
 - `userId` - 用户ID
 - `userType` - 用户类型（student/teacher/admin）
-- `userName` - 用户名称
+- `starrnovaId` - StarrNova ID
 
 ---
 
@@ -537,4 +537,3 @@ API 使用 JWT (JSON Web Token) 进行认证：
 ---
 
 **最后修改时间**: 2026-06-08
-

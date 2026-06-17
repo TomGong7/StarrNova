@@ -33,7 +33,7 @@ function initAdminDashboard() {
 // 加载管理员信息
 function loadAdminInfo() {
     // 这里可以添加从后端API获取管理员信息的逻辑
-    const adminName = getLocalStorage('userName') || '管理员用户';
+    const adminName = getLocalStorage('starrnovaId') || '管理员用户';
     console.log('加载管理员信息:', adminName);
 }
 

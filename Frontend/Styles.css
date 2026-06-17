@@ -49,12 +49,10 @@
     --glass-blur: 24px;
     --glass-shadow:
         0 8px 32px rgba(0, 100, 150, 0.06),
-        inset 0 1px 0 rgba(255, 255, 255, 0.5),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.02);
+        inset 0 1px 0 rgba(255, 255, 255, 0.5);
     --glass-shadow-hover:
         0 12px 40px rgba(0, 100, 150, 0.1),
-        inset 0 1px 0 rgba(255, 255, 255, 0.6),
-        inset 0 -1px 0 rgba(0, 0, 0, 0.02);
+        inset 0 1px 0 rgba(255, 255, 255, 0.6);
     --glass-highlight: linear-gradient(135deg,
             rgba(255, 255, 255, 0.25) 0%,
             rgba(255, 255, 255, 0.05) 40%,
@@ -270,7 +268,9 @@ nav ul li.nav-right {
 }
 
 .btn:focus-visible {
-    box-shadow: 0 0 0 3px rgba(0, 150, 199, 0.3);
+    box-shadow:
+        inset 0 0 8px rgba(0, 150, 199, 0.1),
+        0 0 12px 2px rgba(0, 150, 199, 0.25);
 }
 
 .btn-primary {
@@ -383,7 +383,8 @@ nav ul li.nav-right {
     border-color: var(--color-primary);
     box-shadow:
         var(--glass-shadow),
-        0 0 0 3px rgba(0, 150, 199, 0.15);
+        inset 0 0 8px rgba(0, 150, 199, 0.08),
+        0 0 12px 2px rgba(0, 150, 199, 0.18);
 }
 
 .input:hover:not(:focus) {
@@ -400,7 +401,8 @@ nav ul li.nav-right {
 .input-error:focus {
     box-shadow:
         var(--glass-shadow),
-        0 0 0 3px rgba(239, 68, 68, 0.15);
+        inset 0 0 8px rgba(239, 68, 68, 0.08),
+        0 0 12px 2px rgba(239, 68, 68, 0.18);
 }
 
 .input-group {

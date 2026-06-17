@@ -10,7 +10,7 @@ class User {
         const sql = `
             CREATE TABLE IF NOT EXISTS users (
                 id INT AUTO_INCREMENT PRIMARY KEY,
-                username VARCHAR(50) UNIQUE NOT NULL,
+                starrnova_id VARCHAR(50) UNIQUE NOT NULL,
                 email VARCHAR(100) UNIQUE NOT NULL,
                 password VARCHAR(255) NOT NULL,
                 full_name VARCHAR(100),
@@ -31,21 +31,21 @@ class User {
 
     // Create new user
     static async create(userData) {
-        const { username, email, password, fullName, userType, studentId } = userData;
-        const sql = 'INSERT INTO users (username, email, password, full_name, user_type, student_id) VALUES (?, ?, ?, ?, ?, ?)';
+        const { starrnovaId, email, password, fullName, userType, studentId } = userData;
+        const sql = 'INSERT INTO users (starrnova_id, email, password, full_name, user_type, student_id) VALUES (?, ?, ?, ?, ?, ?)';
         try {
-            const [result] = await db.query(sql, [username, email, password, fullName, userType, studentId]);
+            const [result] = await db.query(sql, [starrnovaId, email, password, fullName, userType, studentId]);
             return result.insertId;
         } catch (err) {
             throw err;
         }
     }
 
-    // Find user by username
-    static async findByUsername(username) {
-        const sql = 'SELECT * FROM users WHERE username = ?';
+    // Find user by starrnova_id
+    static async findByStarrnovaId(starrnovaId) {
+        const sql = 'SELECT * FROM users WHERE starrnova_id = ?';
         try {
-            const [rows] = await db.query(sql, [username]);
+            const [rows] = await db.query(sql, [starrnovaId]);
             return rows[0];
         } catch (err) {
             throw err;
@@ -65,7 +65,7 @@ class User {
 
     // Find user by ID
     static async findById(id) {
-        const sql = 'SELECT id, username, email, full_name, user_type, status, created_at FROM users WHERE id = ?';
+        const sql = 'SELECT id, starrnova_id, email, full_name, user_type, status, created_at FROM users WHERE id = ?';
         try {
             const [rows] = await db.query(sql, [id]);
             return rows[0];
@@ -76,7 +76,7 @@ class User {
 
     // Get all users
     static async findAll() {
-        const sql = 'SELECT id, username, email, full_name, user_type, status, created_at FROM users';
+        const sql = 'SELECT id, starrnova_id, email, full_name, user_type, status, created_at FROM users';
         try {
             const [rows] = await db.query(sql);
             return rows;

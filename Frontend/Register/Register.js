@@ -18,7 +18,7 @@ function handleRegisterSubmit(event) {
     
     // 获取表单数据
     const userType = document.getElementById('userType').value;
-    const username = document.getElementById('username').value;
+    const starrnovaId = document.getElementById('starrnovaid').value;
     const email = document.getElementById('email').value;
     const password = document.getElementById('password').value;
     const confirmPassword = document.getElementById('confirmPassword').value;
@@ -49,7 +49,7 @@ function handleRegisterSubmit(event) {
     // 这里可以添加后端API调用来提交注册信息
     console.log('注册数据:', {
         userType,
-        username,
+        starrnovaId,
         email,
         fullName,
         studentId

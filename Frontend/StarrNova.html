@@ -4,38 +4,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>欢迎 - StarrNova 智能教育平台</title>
+    <title>欢迎 - StarrNova</title>
     <link rel="stylesheet" href="/Styles.css">
     <link rel="stylesheet" href="/StarrNova.css">
 </head>
 
 <body class="welcome-page">
     <div class="wrapper">
-        <!-- 主内容 -->
-        <main>
-            <!-- 装饰背景光斑 -->
-            <div class="bg-orb bg-orb-1"></div>
-            <div class="bg-orb bg-orb-2"></div>
-            <div class="bg-orb bg-orb-3"></div>
+        <div class="bg-orb bg-orb-1"></div>
+        <div class="bg-orb bg-orb-2"></div>
+        <div class="bg-orb bg-orb-3"></div>
 
-            <!-- 英雄区域 -->
-            <section class="hero">
-                <div class="container">
-                    <div class="hero-card glass-3">
-                        <span class="hero-badge">StarrNova 智能教育平台</span>
-                        <h1>让教育<span class="text-accent">触手可及</span></h1>
-                        <p class="hero-desc">为高校提供一站式教学管理与学习体验</p>
-                        <div class="hero-actions">
-                            <a href="Register/Register.html" class="btn-glass btn-glass-primary">开始使用</a>
-                            <a href="#" class="btn-glass">了解更多</a>
+        <main class="welcome-main">
+            <div class="welcome-container">
+                <section class="welcome-brand">
+                    <h2 class="brand-name">StarrNova</h2>
+                    <h1>让教育<span class="text-accent">触手可及</span></h1>
+                    <p class="brand-desc">为高校提供一站式教学管理与学习体验，<br>连接师生，赋能未来。</p>
+                    <div class="brand-features">
+                        <div class="brand-feature-item">
+                            <span class="brand-feature-icon">📚</span>
+                            <span>智能课程管理</span>
+                        </div>
+                        <div class="brand-feature-item">
+                            <span class="brand-feature-icon">📊</span>
+                            <span>数据分析洞察</span>
+                        </div>
+                        <div class="brand-feature-item">
+                            <span class="brand-feature-icon">🤝</span>
+                            <span>师生高效协作</span>
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
 
+                <section class="welcome-login glass">
+                    <h2 class="login-title">登录 StarrNova</h2>
+                    <div class="login-tabs tabs">
+                        <button class="tab active" data-tab="starrnova-id">StarrNova ID</button>
+                        <button class="tab" data-tab="sms-code">验证码登录</button>
+                        <button class="tab" data-tab="student-id">学工号登录</button>
+                    </div>
+
+                    <form id="loginForm" class="login-form" autocomplete="off">
+                        <div class="tab-panels-wrapper">
+                            <div class="tab-panel active" id="panel-starrnova-id">
+                                <div class="input-group">
+                                    <label for="sn-starrnovaid">StarrNova ID</label>
+                                    <input type="text" id="sn-starrnovaid" class="input" placeholder="请输入 StarrNova ID" autocomplete="starrnovaid">
+                                </div>
+                                <div class="input-group">
+                                    <label for="sn-password">密码</label>
+                                    <input type="password" id="sn-password" class="input" placeholder="请输入密码" autocomplete="current-password">
+                                </div>
+                            </div>
+
+                            <div class="tab-panel" id="panel-sms-code">
+                                <div class="input-group">
+                                    <label for="sms-contact">手机号 / 邮箱</label>
+                                    <input type="text" id="sms-contact" class="input" placeholder="请输入手机号或邮箱地址" autocomplete="tel">
+                                </div>
+                                <div class="input-group">
+                                    <label for="sms-code-input">验证码</label>
+                                    <div class="sms-code-row">
+                                        <input type="text" id="sms-code-input" class="input" placeholder="请输入验证码" maxlength="6" autocomplete="one-time-code">
+                                        <button type="button" class="btn btn-secondary btn-send-code" id="btnSendCode">获取验证码</button>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="tab-panel" id="panel-student-id">
+                                <div class="input-group">
+                                    <label for="sid-number">学号 / 工号</label>
+                                    <input type="text" id="sid-number" class="input" placeholder="请输入学号或工号">
+                                </div>
+                                <div class="input-group">
+                                    <label for="sid-password">密码</label>
+                                    <input type="password" id="sid-password" class="input" placeholder="请输入密码" autocomplete="current-password">
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="login-options">
+                            <label class="checkbox">
+                                <input type="checkbox" id="keepLoggedIn">
+                                <span>保持登录状态</span>
+                            </label>
+                            <button type="button" class="btn-forgot" id="btnForgot">忘记密码？</button>
+                        </div>
+
+                        <div class="login-actions">
+                            <button type="submit" class="btn btn-primary btn-login">登 录</button>
+                            <a href="/Register/Register.html" class="btn btn-secondary btn-register">注 册</a>
+                        </div>
+                    </form>
+
+                    <div class="login-message" id="loginMessage"></div>
+                </section>
+            </div>
         </main>
 
-        <!-- 页脚 -->
         <footer>
             <div class="container">
                 <p>&copy; 2026 StarrNova. 保留所有权利。</p>

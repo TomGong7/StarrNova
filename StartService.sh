@@ -38,6 +38,7 @@ cleanup() {
         log_info "Stopping backend server (PID: $SERVER_PID)..."
         kill "$SERVER_PID" 2>/dev/null || true
         wait "$SERVER_PID" 2>/dev/null || true
+        log_ok "Backend server (PID: $SERVER_PID) stopped."
     fi
 }
 trap cleanup EXIT INT TERM
@@ -49,6 +50,8 @@ print_banner() {
     echo -e "${BOLD}${CYAN}────────────────────────────────────────────${NC}"
     echo ""
 }
+
+print_banner
 
 # ----------------------------------------
 # Step 1 — Load environment variables
@@ -249,10 +252,11 @@ fi
 # Done
 # ----------------------------------------
 
+echo ""
 echo -e "  Frontend : ${CYAN}http://localhost:$SERVER_PORT/${NC}"
 echo -e "  API      : ${CYAN}http://localhost:$SERVER_PORT/api/health${NC}"
 echo -e "  Database : ${CYAN}$DB_HOST:$DB_PORT/$DB_NAME${NC}"
 echo ""
-echo -e "Press ${YELLOW}Ctrl+C${NC} to stop"
+echo -e "  Press ${YELLOW}Ctrl+C${NC} to stop"
 
 wait "$SERVER_PID"
