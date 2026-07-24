@@ -14,7 +14,7 @@ echo ""
 cd "$SCRIPT_DIR/Frontend"
 
 if command -v python3 &>/dev/null; then
-    echo "  地址: http://localhost:$PORT/"
+    echo "  主页: http://localhost:$PORT/StarrNova.html"
     echo "  按 Ctrl+C 停止"
     echo ""
     python3 -m http.server $PORT
